@@ -105,11 +105,11 @@ DROP TABLE IF EXISTS `orderbook`.`history` ;
 
 CREATE TABLE IF NOT EXISTS `orderbook`.`history` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `dateTime` TIMESTAMP NOT NULL,
   `trade_id` INT NOT NULL,
   `trade_buy_order_id` INT NOT NULL,
   `trade_sell_order_id` INT NOT NULL,
-  `dateTime` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`id`, `trade_id`, `trade_buy_order_id`, `trade_sell_order_id`),
+  PRIMARY KEY (`id`),
   INDEX `fk_history_trade1_idx` (`trade_id` ASC, `trade_buy_order_id` ASC, `trade_sell_order_id` ASC) VISIBLE,
   CONSTRAINT `fk_history_trade1`
     FOREIGN KEY (`trade_id` , `trade_buy_order_id` , `trade_sell_order_id`)
