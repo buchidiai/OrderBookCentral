@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head -->
+    <div th:insert="common :: htmlHead"></div>
+
+    <body>
+        <!-- Nav Menu -->
+        <div th:replace="common :: navBar"></div>
+        <!-- Main Body of Page -->
+        <div class='container' >
+               <div class='row'>
+                <div class='col '>
+                    <h1 class='text-center text-dark display-1'>Home Page</h1>
+                  
+                    <hr />
+                </div>
+            </div>
+            
+        </div>    
+        
+            <!-- End main body -->
+            <!-- scripts -->
+            <div th:insert="common :: scripts"></div>
+    </body>
+</html>
