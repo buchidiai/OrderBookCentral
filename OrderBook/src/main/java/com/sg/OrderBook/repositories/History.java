@@ -9,6 +9,6 @@ package com.sg.OrderBook.repositories;
  *
  * @author anmol
  */
-public class Stock {
-    
+public interface History {
+     
 }
