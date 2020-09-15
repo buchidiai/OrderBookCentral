@@ -82,9 +82,11 @@ CREATE TABLE IF NOT EXISTS `orderbook`.`trade` (
   `dateTime` TIMESTAMP NOT NULL,
   `quantity` INT NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
+  `stock_id` INT NOT NULL,
   PRIMARY KEY (`id`, `buy_order_id`, `sell_order_id`),
   INDEX `fk_trade_order_idx` (`buy_order_id` ASC) VISIBLE,
   INDEX `fk_trade_order1_idx` (`sell_order_id` ASC) VISIBLE,
+  INDEX `fk_trade_stock1_idx` (`stock_id` ASC) VISIBLE,
   CONSTRAINT `fk_trade_order`
     FOREIGN KEY (`buy_order_id`)
     REFERENCES `orderbook`.`order` (`id`)
@@ -93,6 +95,11 @@ CREATE TABLE IF NOT EXISTS `orderbook`.`trade` (
   CONSTRAINT `fk_trade_order1`
     FOREIGN KEY (`sell_order_id`)
     REFERENCES `orderbook`.`order` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trade_stock1`
+    FOREIGN KEY (`stock_id`)
+    REFERENCES `orderbook`.`stock` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
