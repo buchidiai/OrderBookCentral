@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.OrderBook.dao;
+package com.sg.OrderBook.repositories;
 
 /**
  *
  * @author anmol
  */
-public class dao {
+public class Stock {
     
 }
