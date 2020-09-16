@@ -34,8 +34,23 @@ public class ServiceLayer {
     
     public List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
         List<Order> orderlist;
-        
         orderlist = orders.findByDatetimeOrderByDatetimeAsc(datetime);
+        return orderlist;
+    }
+    
+    public List<Order> findBySide(String side){
+        List<Order> orderlist;
+        orderlist = orders.findBySide(side);
+        return orderlist;
+    }
+    public List<Order> findByStatus(String status){
+        List<Order> orderlist;
+        orderlist = orders.findByStatus(status);
+        return orderlist;
+    }
+    public List<Order> findByQuantity(int quantity){
+        List<Order> orderlist;
+        orderlist = orders.findByQuantity(quantity);
         return orderlist;
     }
     
