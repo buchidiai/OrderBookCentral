@@ -17,9 +17,8 @@
                 </div>
             </div>
 
-            <div class="d-flex  col-xl-12 col-lg-4 col-md-3 col-sm-12 p-4">
 
-                <table id="dtBasicExample" class="table" width="100%">
+                <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
                     <thead class="primary-color white-text">
                         <tr>
                             <th class="th-sm">ID
@@ -36,7 +35,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="searchable ">
                         <tr>
                             <td>1</td>
                             <td>07/31/2020 12:23 PM</td>
@@ -80,15 +79,13 @@
                         </tr>
                     </tfoot>
                 </table>
-            </div>
-
-
-
         </div>    
 
         <!-- End main body -->
         <!-- scripts -->
+
         <div th:insert="common :: scripts"></div>
+        <script  src="index.js"></script>
         <div th:insert="common :: footer"></div>
     </body>
 </html>

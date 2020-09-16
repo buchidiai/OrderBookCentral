@@ -15,6 +15,11 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <!-- datatables css -->
+        <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+  
+
+
         <title>Order Book Central</title>
 
     </head>
@@ -42,7 +47,7 @@
                 <ul class="navbar-nav mr-auto ">
                     <li class="nav-item active pr-3">
                         <a class="nav-link" th:href="@{/}">Stocks
-                       
+
                         </a>
                     </li>
                     <li class="nav-item active pr-3">
@@ -67,10 +72,6 @@
         </div>
     </div>
 
-
-
-
-
     <div  th:fragment="headerAndCount" >
         <div class='pt-3 row text-center d-flex justify-content-center'>
             <h3 class='text-center text-dark pr-1' th:text="${title}"></h3>
@@ -79,11 +80,7 @@
         <hr />
     </div>
 
-
-
-
     <!-- scripts-->
-
     <div th:fragment="scripts">
         <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -92,20 +89,17 @@
         <!-- Bootstrap core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script> 
+              <!-- datatables js -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"  ></script>
     </div>
 
-
-
-
-    <footer class="page-footer font-small blue" th:fragment="footer">
+    <footer class="page-footer font-small blue fixed-bottom" th:fragment="footer">
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">
             <p class='text-center text-white'>&copy; 2020 orderbookcentral.com</p>
         </div>
         <!-- Copyright -->
     </footer>
-
-
 </body>
 </html>
