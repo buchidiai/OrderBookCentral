@@ -7,6 +7,7 @@ package com.sg.OrderBook.service;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 import com.sg.OrderBook.entities.History;
+import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.repositories.HistoryRepository;
 import com.sg.OrderBook.repositories.OrderRepository;
 import com.sg.OrderBook.repositories.*;
@@ -106,4 +107,28 @@ public class ServiceLayer {
         return history;
   
     }
+    
+     //-----------------------Parties-----------------------------------------------------
+    
+     public List<Party> findAllParty(){
+      
+         return parties.findAll();
+       
+    }
+    
+    
+     public Party findPartyById(int id){
+       
+        return parties.findById(id).orElse(null);
+       
+    }
+    
+    
+    public Party deletePartyById(int id){
+       History history = histories.findById(id).orElse(null);
+         histories.deleteById(id);
+        return history;
+  
+    }
+    
 }
