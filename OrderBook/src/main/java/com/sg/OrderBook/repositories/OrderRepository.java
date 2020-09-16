@@ -5,9 +5,10 @@
  */
 package com.sg.OrderBook.repositories;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+
 import com.sg.OrderBook.entities.History;
 import com.sg.OrderBook.entities.History;
+import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.entities.Party;
 import java.util.List;

@@ -5,13 +5,15 @@
  */
 package com.sg.OrderBook.service;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+
 import com.sg.OrderBook.entities.History;
+import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.repositories.HistoryRepository;
 import com.sg.OrderBook.repositories.OrderRepository;
 import com.sg.OrderBook.repositories.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class ServiceLayer {
     
     public List<Order> findAllOrders(){
         
-        return  orders.findAll();
+      return orders.findAll();
         
     }
     
@@ -159,6 +161,26 @@ public class ServiceLayer {
          stocks.deleteById(id);
     
     }
+    
+    
+    
+     public <List>Stock findStockByPrice(BigDecimal price){
+        return stocks.findByPrice(price);
+     }
+     
+     
+    public<List>Stock findStockByParty(Party id){
+        return stocks.findByParty(id);
+    }
+    
+    
+    public <List>Stock findStockByTickSize(BigDecimal price){
+        return stocks.findByTickSize(price);
+    }
+    
+   //-----------------------Trades----------------------------------------------------- 
+    
+    
     
    
     
