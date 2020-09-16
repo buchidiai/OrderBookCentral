@@ -8,6 +8,7 @@ package com.sg.OrderBook.service;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 import com.sg.OrderBook.entities.History;
 import com.sg.OrderBook.entities.Party;
+import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.repositories.HistoryRepository;
 import com.sg.OrderBook.repositories.OrderRepository;
 import com.sg.OrderBook.repositories.*;
@@ -15,11 +16,13 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author anmol
  */
+@Service
 public class ServiceLayer {
     @Autowired
     HistoryRepository histories;
@@ -111,14 +114,14 @@ public class ServiceLayer {
     
      //-----------------------Parties-----------------------------------------------------
     
-     public List<Party> findAllParty(){
+    public List<Party> findAllParty(){
       
          return parties.findAll();
        
     }
     
     
-     public Party findPartyById(int id){
+    public Party findPartyById(int id){
        
         return parties.findById(id).orElse(null);
        
@@ -131,7 +134,32 @@ public class ServiceLayer {
     
     }
     
+    public List<Party> findByName(String Name){
+        return parties.findByName(Name);
+      }
+    
+  //-----------------------Stocks----------------------------------------------------- 
+    
+   public List<Stock> findAllStock(){
+      
+         return stocks.findAll();
+       
+    }
     
     
+    public Stock findStockById(int id){
+       
+        return stocks.findById(id).orElse(null);
+       
+    }
+    
+    
+    public void deleteStockById(int id){
+       
+         stocks.deleteById(id);
+    
+    }
+    
+   
     
 }
