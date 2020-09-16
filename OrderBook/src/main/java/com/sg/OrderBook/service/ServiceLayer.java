@@ -28,22 +28,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceLayer {
     @Autowired
-    HistoryRepository histories;
+    private HistoryRepository histories;
     
     @Autowired
-    OrderRepository orders;
+    private OrderRepository orders;
     
     @Autowired
-    PartyRepository parties;
+    private PartyRepository parties;
     
     @Autowired
-    StockRepository stocks;
+    private StockRepository stocks;
     
     @Autowired
-    TradeRepository trades;
+    private TradeRepository trades;
     
     
     //-----------------------ORDERS-----------------------------------------------------
+    
+    
     
     public List<Order> findAllOrders(){
         
@@ -52,34 +54,32 @@ public class ServiceLayer {
     }
     
     
-    public List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
+    public List<Order> findOrderByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
         
         return orders.findByDatetimeOrderByDatetimeAsc(datetime);
        
     }
     
-    public List<Order> findBySide(String side){
+    public List<Order> findOrderBySide(String side){
         
         return orders.findBySide(side);
    
     }
-    public List<Order> findByStatus(String status){
-        List<Order> orderlist;
-        orderlist = orders.findByStatus(status);
-        return orderlist;
-    }
-    public List<Order> findByQuantity(int quantity){
-        List<Order> orderlist;
-        orderlist = orders.findByQuantity(quantity);
-        return orderlist;
+    public List<Order> findOrderByStatus(String status){
         
+        return orders.findByStatus(status);
+    
+    }
+    public List<Order> findOrderByQuantity(int quantity){
        
+        return orders.findByQuantity(quantity);
+     
     }
     
     public Order findOrderById(int id){
        
-        Order order = orders.findById(id).orElse(null);
-        return order;
+        return  orders.findById(id).orElse(null);
+        
         
        
     }
@@ -185,6 +185,10 @@ public class ServiceLayer {
       
          return trades.findAll();
        
+    }
+    
+    public void makeTrade(Trade trade){
+        trades.save(trade);
     }
     
     

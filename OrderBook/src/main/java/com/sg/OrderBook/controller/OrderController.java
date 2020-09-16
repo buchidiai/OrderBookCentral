@@ -5,16 +5,29 @@
  */
 package com.sg.OrderBook.controller;
 
+import com.sg.OrderBook.service.ServiceLayer;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 /**
  *
  * @author anmol
  */
 @Controller
 public class OrderController {
+
+    @Autowired
+    ServiceLayer service;
+
+    @GetMapping("stocks")
+    public String displayLocations(Model model) {
+        model.addAttribute("stocks", service.findAllStock());
+       
+        return "stocks";
+    }
+    
     
 }
