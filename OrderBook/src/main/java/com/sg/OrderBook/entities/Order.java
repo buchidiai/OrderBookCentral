@@ -32,10 +32,12 @@ public class Order {
     
        
     
-    @Enumerated(EnumType.ORDINAL)
-    private String status;
+   
+    @Column
+    private  String status;
     
-    @Enumerated(EnumType.ORDINAL)
+    
+     @Column
     private String side;
     
     @Column
