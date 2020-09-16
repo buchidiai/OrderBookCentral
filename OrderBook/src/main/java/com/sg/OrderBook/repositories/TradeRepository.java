@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author anmol
  */
+@Repository
 public interface TradeRepository extends JpaRepository<Stock, Integer>{
     List<Trade> findByBuyorder(Order order);
     List<Trade> findBySellorder(Order order);

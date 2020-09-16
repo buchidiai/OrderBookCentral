@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author anmol
  */
+@Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
     List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime);
     List<Order> findBySide(String side);

@@ -14,6 +14,7 @@ import com.sg.OrderBook.repositories.*;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
@@ -78,7 +79,7 @@ public class ServiceLayer {
     }
     
     public void deleteOrderById(int id){
-       
+      
          orders.deleteById(id);
         
     }
@@ -124,11 +125,13 @@ public class ServiceLayer {
     }
     
     
-    public Party deletePartyById(int id){
-       History history = histories.findById(id).orElse(null);
+    public void deletePartyById(int id){
+       
          histories.deleteById(id);
-        return history;
-  
+    
     }
+    
+    
+    
     
 }

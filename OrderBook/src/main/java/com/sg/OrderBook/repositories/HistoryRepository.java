@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author anmol
  */
-
+@Repository
 public interface HistoryRepository extends JpaRepository<History, Integer>{
     
      

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author anmol
  */
+@Repository
 public interface StockRepository extends JpaRepository<Stock, Integer>{
     <List>Stock findByPrice(BigDecimal price);
     <List>Stock findByParty(Party id);
