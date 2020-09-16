@@ -6,10 +6,12 @@
 package com.sg.OrderBook.service;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.sg.OrderBook.entities.History;
 import com.sg.OrderBook.repositories.HistoryRepository;
 import com.sg.OrderBook.repositories.OrderRepository;
 import com.sg.OrderBook.repositories.*;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -32,6 +34,16 @@ public class ServiceLayer {
     @Autowired
     TradeRepository trades;
     
+    
+    //-----------------------ORDERS-----------------------------------------------------
+    
+    public List<Order> findAllOrders(){
+        
+        return  orders.findAll();
+        
+    }
+    
+    
     public List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
         List<Order> orderlist;
         orderlist = orders.findByDatetimeOrderByDatetimeAsc(datetime);
@@ -52,8 +64,46 @@ public class ServiceLayer {
         List<Order> orderlist;
         orderlist = orders.findByQuantity(quantity);
         return orderlist;
+        
+       
+    }
+    
+    public Order findOrderById(int id){
+       
+        Order order = orders.findById(id).orElse(null);
+        return order;
+        
+       
+    }
+    
+    public void deleteOrderById(int id){
+       
+         orders.deleteById(id);
+        
     }
     
     
+    //-----------------------HISTORIES-----------------------------------------------------
+   
+     
+    public List<History> findAllHistory(){
+      
+         return histories.findAll();
+       
+    }
     
+    
+     public History findHistoryById(int id){
+       
+        return histories.findById(id).orElse(null);
+       
+    }
+    
+    
+    public History deleteHistoryById(int id){
+       History history = histories.findById(id).orElse(null);
+         histories.deleteById(id);
+        return history;
+  
+    }
 }
