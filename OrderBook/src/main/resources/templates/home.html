@@ -4,23 +4,112 @@
     <!-- Head -->
     <div th:insert="common :: htmlHead"></div>
 
-    <body>
+    <body class="grey lighten-5">
         <!-- Nav Menu -->
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
-        <div class='container' >
-               <div class='row'>
-                <div class='col '>
-                    <h1 class='text-center text-dark display-1'>Home Page</h1>
-                  
+        <div class='container-fluid'>
+            <div class='flex-row p-3'>
+                <div class='col'>
+                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>STOCKS</h1>
                     <hr />
                 </div>
             </div>
-            
+            <div class='row'>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">AMAZN</h2>
+                            <p class="brown-lighter-hover font-italic"> Amazon</p>
+                            <p class="brown-lighter-hover font-italic"> Price: $117</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>     
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable w-100">
+                        <div class="card-body text-center ">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">NFLX</h2>
+                            <p class="brown-lighter-hover font-italic"> Netflix</p>
+                            <p class="brown-lighter-hover font-italic"> Price: $800</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>
+                            <i class="fas fa-fire fa-3x red-text"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center ">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">TSLA</h2>
+                            <p class="brown-lighter-hover font-italic"> Tesla</p> 
+                            <p class="brown-lighter-hover font-italic"> Price: $117</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>        
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">WMT</h2>
+                            <p class="brown-lighter-hover font-italic"> Walmart</p>  
+                            <p class="brown-lighter-hover font-italic"> Price: $60</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>      
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">NVDA</h2>
+                            <p class="brown-lighter-hover font-italic"> NVIDIA Corporation</p>   
+                            <p class="brown-lighter-hover font-italic"> Price: 766</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>             
+                            <i class="fas fa-fire fa-3x red-text"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">JPM</h2>
+                            <p class="brown-lighter-hover font-italic"> JPMorgan Chase & Co.</p>  
+                            <p class="brown-lighter-hover font-italic"> Price: $124</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>     
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">GOOG</h2>
+                            <p class="brown-lighter-hover font-italic"> Google</p>   
+                            <p class="brown-lighter-hover font-italic"> Price: $100</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>          
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable  w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">BABA</h2>
+                            <p class="brown-lighter-hover font-italic"> Alibaba Group Holding Limited</p>   
+                            <p class="brown-lighter-hover font-italic"> Price: $175</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>        
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>    
-        
-            <!-- End main body -->
-            <!-- scripts -->
-            <div th:insert="common :: scripts"></div>
+
+        <!-- End main body -->
+        <!-- scripts -->
+        <div th:insert="common :: scripts"></div>
+        <div th:insert="common :: footer"></div>
     </body>
 </html>
