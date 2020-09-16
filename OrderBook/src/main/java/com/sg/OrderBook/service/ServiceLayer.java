@@ -10,6 +10,7 @@ import com.sg.OrderBook.entities.History;
 import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.entities.Stock;
+import com.sg.OrderBook.entities.Trade;
 import com.sg.OrderBook.repositories.HistoryRepository;
 import com.sg.OrderBook.repositories.OrderRepository;
 import com.sg.OrderBook.repositories.*;
@@ -52,15 +53,15 @@ public class ServiceLayer {
     
     
     public List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
-        List<Order> orderlist;
-        orderlist = orders.findByDatetimeOrderByDatetimeAsc(datetime);
-        return orderlist;
+        
+        return orders.findByDatetimeOrderByDatetimeAsc(datetime);
+       
     }
     
     public List<Order> findBySide(String side){
-        List<Order> orderlist;
-        orderlist = orders.findBySide(side);
-        return orderlist;
+        
+        return orders.findBySide(side);
+   
     }
     public List<Order> findByStatus(String status){
         List<Order> orderlist;
@@ -180,6 +181,38 @@ public class ServiceLayer {
     
    //-----------------------Trades----------------------------------------------------- 
     
+    public List<Trade> findAllTrades(){
+      
+         return trades.findAll();
+       
+    }
+    
+    
+    public Trade findTradeById(int id){
+       
+        return trades.findById(id).orElse(null);
+       
+    }
+    
+    
+    public void deleteTradeById(int id){
+       
+         trades.deleteById(id);
+    
+    }
+    
+    public List<Trade> findTradeByBuyorder(Order order){
+        return trades.findByBuyorder(order);
+    }
+    
+    public List<Trade> findTradeBySellorder(Order order){
+        
+        return trades.findBySellorder(order);
+    }
+    public List<Trade> findTradeByStock(Stock stock){
+        
+        return trades.findByStock(stock);
+    }
     
     
    
