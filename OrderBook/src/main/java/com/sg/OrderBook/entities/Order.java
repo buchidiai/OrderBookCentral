@@ -44,7 +44,7 @@ public class Order {
     private int quantity;
     
     @Column
-    private java.sql.Timestamp dateTime;
+    private java.sql.Timestamp datetime;
     
     
     @ManyToOne
@@ -85,11 +85,11 @@ public class Order {
     }
 
     public Timestamp getDateTime() {
-        return dateTime;
+        return datetime;
     }
 
     public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
+        this.datetime = dateTime;
     }
 
     public Stock getStock() {

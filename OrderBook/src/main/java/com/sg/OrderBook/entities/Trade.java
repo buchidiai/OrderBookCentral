@@ -31,9 +31,34 @@ public class Trade {
     @Column
     private BigDecimal price;
     
+    
     @ManyToOne
     @JoinColumn(name = "stockId", nullable = false )
     private Stock stock;
+    
+    @ManyToOne
+    @JoinColumn(name = "buyOrderId", nullable = false )
+    private Order buyorder;
+    
+    @ManyToOne
+    @JoinColumn(name = "sellOrderId", nullable = false )
+    private Order sellorder;
+
+    public Order getBuyorder() {
+        return buyorder;
+    }
+
+    public void setBuyorder(Order buyorder) {
+        this.buyorder = buyorder;
+    }
+
+    public Order getSellorder() {
+        return sellorder;
+    }
+
+    public void setSellorder(Order sellorder) {
+        this.sellorder = sellorder;
+    }
 
     public int getId() {
         return id;
