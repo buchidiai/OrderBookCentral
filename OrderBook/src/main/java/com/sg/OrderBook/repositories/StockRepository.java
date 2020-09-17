@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public interface StockRepository extends JpaRepository<Stock, Integer>{
     <List>Stock findByPrice(BigDecimal price);
     <List>Stock findByParty(Party id);
-    <List>Stock findByTickSize(BigDecimal price);
+    <List>Stock findByTicksize(BigDecimal price);
 
     
 }

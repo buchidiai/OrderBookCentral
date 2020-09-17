@@ -56,7 +56,7 @@ public class StockService {
     
     
     public <List>Stock findStockByTickSize(BigDecimal price){
-        return stocks.findByTickSize(price);
+        return stocks.findByTicksize(price);
     }
     
     public void saveStock(Stock stock){

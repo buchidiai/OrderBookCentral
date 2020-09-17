@@ -23,6 +23,7 @@ public class StockController {
     @GetMapping("Stocks")
     public String displayStocks(Model model){
         model.addAttribute("stocks",stocks.findAllStock());
+        System.out.println(stocks.findAllStock().toString());
         return "stocks";
     }
     

@@ -20,7 +20,7 @@ public class Stock {
     private int id;
     
     @Column
-    private BigDecimal tickSize;
+    private BigDecimal ticksize;
     
     @Column
     private BigDecimal price;
@@ -37,13 +37,15 @@ public class Stock {
         this.id = id;
     }
 
-    public BigDecimal getTickSize() {
-        return tickSize;
+    public BigDecimal getTicksize() {
+        return ticksize;
     }
 
-    public void setTickSize(BigDecimal tickSize) {
-        this.tickSize = tickSize;
+    public void setTicksize(BigDecimal ticksize) {
+        this.ticksize = ticksize;
     }
+
+   
 
     public BigDecimal getPrice() {
         return price;
@@ -59,6 +61,11 @@ public class Stock {
 
     public void setParty(Party party) {
         this.party = party;
+    }
+
+    @Override
+    public String toString() {
+        return "Stock{" + "id=" + id + ", ticksize=" + ticksize + ", price=" + price + ", party=" + party + '}';
     }
     
     
