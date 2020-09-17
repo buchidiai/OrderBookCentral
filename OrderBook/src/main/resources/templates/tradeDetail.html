@@ -1,1 +1,44 @@
 
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head -->
+    <div th:insert="common :: htmlHead"></div>
+
+    <body class="grey lighten-5">
+        <!-- Nav Menu -->
+        <div th:replace="common :: navBar"></div>
+        <!-- Main Body of Page -->
+        <div class='container-fluid'>
+            <div class='flex-row p-3'>
+                <div class='col'>
+                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>TRADE DETAIL</h1>
+                    <hr />
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable w-100">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">TRADE ID : 1</h2>
+                            <p class="brown-lighter-hover font-italic"> BUY ORDER ID : 23</p>
+                            <p class="brown-lighter-hover font-italic"> SELL ORDER ID : 45</p>
+                            <p class="brown-lighter-hover font-italic"> DATE TIME : 07/31/2020 12:23 PM </p>
+                             <p class="brown-lighter-hover font-italic"> DATE TIME : 07/31/2020 12:23 PM </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- End main body -->
+    <!-- scripts -->
+
+    <div th:insert="common :: scripts"></div>
+    <script  src="index.js"></script>
+    <div th:insert="common :: footer"></div>
+</body>
+</html>
