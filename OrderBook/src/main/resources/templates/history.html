@@ -1,0 +1,91 @@
+
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head -->
+    <div th:insert="common :: htmlHead"></div>
+
+    <body class="grey lighten-5">
+        <!-- Nav Menu -->
+        <div th:replace="common :: navBar"></div>
+        <!-- Main Body of Page -->
+        <div class='container-fluid'>
+            <div class='flex-row p-3'>
+                <div class='col'>
+                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>HISTORY</h1>
+                    <hr />
+                </div>
+            </div>
+            <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
+                <thead class="primary-color white-text">
+                    <tr>
+                        <th class="th-sm">ID
+                        </th>
+                        <th class="th-sm">TIME
+                        </th>
+                        <th class="th-sm">SYMBOL
+                        </th>
+                        <th class="th-sm">NAME
+                        </th>
+                        <th class="th-sm">SIZE
+                        </th>
+                        <th class="th-sm">PRICE
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="searchable ">
+                    <tr class="openModal" th:href="@{/tradeDetail(id=${1})}"  >
+                        <td >1</td>
+                        <td>07/31/2020 12:23 PM</td>
+                        <td>GOOG</td>
+                        <td>GOOGLE</td>
+                        <td>50</td>
+                        <td >$500</td>
+                    </tr>
+                    <tr th:href="@{/tradeDetail(id=${32})}">
+                        <td >32</td>
+                        <td>09/12/2019 4:00 PM</td>
+                        <td>AMAZN</td>
+                        <td>AMAZON</td>
+                        <td>300</td>
+                        <td>$5000</td>
+                    </tr>
+                    <tr th:onclick="'javascript:openModal(\''+ ${9999} +'\');'">
+                        <td >43</td>
+                        <td>02/15/2021 1:15 PM</td>
+                        <td>NFLX</td>
+                        <td>NETFLIX</td>
+                        <td>120</td>
+                        <td>$279</td>
+                    </tr>
+
+                </tbody>
+                <tfoot class="primary-color white-text">
+                    <tr>
+                        <th>ID
+                        </th>
+                        <th>TIME
+                        </th>
+                        <th>SYMBOL
+                        </th>
+                        <th>NAME
+                        </th>
+                        <th>SIZE
+                        </th>
+                        <th>PRICE
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>    
+
+    <!-- End main body -->
+    <!-- scripts -->
+
+    <div th:insert="common :: scripts"></div>
+    <script  src="index.js"></script>
+    <div th:insert="common :: footer"></div>
+</body>
+</html>
