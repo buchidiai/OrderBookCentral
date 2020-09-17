@@ -50,7 +50,7 @@
                         <td>300</td>
                         <td>$5000</td>
                     </tr>
-                    <tr th:onclick="'javascript:openModal(\''+ ${9999} +'\');'">
+                    <tr>
                         <td >43</td>
                         <td>02/15/2021 1:15 PM</td>
                         <td>NFLX</td>
@@ -77,54 +77,6 @@
                     </tr>
                 </tfoot>
             </table>
-            
-            <h6  th:text="${detail}" class="border"> </h6>
-
-            <!-- Modal: modalQuickView -->
-            <div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-fluid modal-bottom" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <h2 class="h2-responsive product-name">
-                                        <strong>Buy Order</strong>
-
-                                    </h2>
-                                    <h6  th:text="${id}"> </h6>
-                                     <h6  > test</h6>
-                                    table
-                                    
-                                     <input type="text" class="form-control" name="name" placeholder="Hero name" th:text="${id}">
-
-
-
-                                </div>
-                                <!--                                <div class="col-xl-6">
-                                                                    <h2 class="h2-responsive product-name">
-                                                                        <strong>Sell Order</strong>
-                                                                    </h2>
-                                
-                                                                    table
-                                
-                                
-                                                                </div>-->
-                            </div>
-                            <!--                            <div class="col-xl-12 d-flex justify-content-center">
-                                                            <h2 class="h2-responsive product-name">
-                                                                <strong>Trade</strong>
-                                                            </h2>
-                            
-                            
-                                                            table
-                                                             /.Add to Cart 
-                                                        </div>-->
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
         </div>
     </div>    
 

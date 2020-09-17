@@ -25,10 +25,7 @@ public class TradeController {
     public String getTrade(Model model, int id) {
         System.out.println("id  is " + id);
         model.addAttribute("id", id);
-
-        System.out.println("sending " + id);
-
-        return "trades";
+        return "tradeDetail";
     }
 
 }
