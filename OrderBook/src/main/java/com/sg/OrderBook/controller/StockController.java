@@ -20,7 +20,7 @@ public class StockController {
     @Autowired
     private StockService stocks;
     
-    @GetMapping("Stocks")
+    @GetMapping("stocks")
     public String displayStocks(Model model){
         model.addAttribute("stocks",stocks.findAllStock());
         System.out.println(stocks.findAllStock().toString());
