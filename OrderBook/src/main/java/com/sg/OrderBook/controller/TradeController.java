@@ -18,6 +18,15 @@ public class TradeController {
 
     @GetMapping("/trades")
     public String TradePage(Model model) {
+        return "trades";
+    }
+
+    @GetMapping("/tradeDetail")
+    public String getTrade(Model model, int id) {
+        System.out.println("id  is " + id);
+        model.addAttribute("id", id);
+
+        System.out.println("sending " + id);
 
         return "trades";
     }
