@@ -13,19 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author louie
+ * @author anmol
  */
 @Controller
-public class HomeController {
-
+public class StockController {
     @Autowired
     private StockService stocks;
-
-    @GetMapping("/")
-    public String HomePage(Model model) {
-        model.addAttribute("stocks", stocks.findAllStock());
+    
+    @GetMapping("stocks")
+    public String displayStocks(Model model){
+        model.addAttribute("stocks",stocks.findAllStock());
         System.out.println(stocks.findAllStock().toString());
-        return "home";
+        return "stocks";
     }
-
+    
+    
+    
 }
