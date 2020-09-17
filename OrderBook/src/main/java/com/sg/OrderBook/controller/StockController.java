@@ -5,22 +5,26 @@
  */
 package com.sg.OrderBook.controller;
 
-
-import org.springframework.ui.Model;
+import com.sg.OrderBook.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
  * @author anmol
  */
 @Controller
-public class OrderController {
+public class StockController {
+    @Autowired
+    private StockService stocks;
     
-   
-
+    @GetMapping("Stocks")
+    public String displayStocks(Model model){
+        model.addAttribute("stocks",stocks.findAllStock());
+        return "stocks";
+    }
     
     
     
