@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS `orderbook`.`party` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `symbol` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `symbol_UNIQUE` (`symbol` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -121,6 +123,27 @@ CREATE TABLE IF NOT EXISTS `orderbook`.`history` (
   CONSTRAINT `fk_history_trade1`
     FOREIGN KEY (`trade_id` , `trade_buy_order_id` , `trade_sell_order_id`)
     REFERENCES `orderbook`.`trade` (`id` , `buy_order_id` , `sell_order_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `orderbook`.`orderTransaction`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `orderbook`.`orderTransaction` ;
+
+CREATE TABLE IF NOT EXISTS `orderbook`.`orderTransaction` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order_id` INT NOT NULL,
+  `order_stock_id` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  `dateTime` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`, `order_id`, `order_stock_id`),
+  INDEX `fk_orderTransaction_order1_idx` (`order_id` ASC, `order_stock_id` ASC) VISIBLE,
+  CONSTRAINT `fk_orderTransaction_order1`
+    FOREIGN KEY (`order_id` , `order_stock_id`)
+    REFERENCES `orderbook`.`order` (`id` , `stock_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

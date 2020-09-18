@@ -5,7 +5,6 @@
  */
 package com.sg.OrderBook.entities;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
 
 /**
@@ -14,17 +13,16 @@ import javax.persistence.*;
  */
 @Entity
 public class Party {
-    
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    
+
     @Column
     private String name;
-    
+
     @Column
     private String symbol;
-
 
     public int getId() {
         return id;
@@ -49,6 +47,10 @@ public class Party {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Party{" + "id=" + id + ", name=" + name + ", symbol=" + symbol + '}';
+    }
+
 }
