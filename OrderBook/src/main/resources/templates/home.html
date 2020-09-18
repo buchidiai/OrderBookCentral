@@ -9,8 +9,6 @@
         <!-- Nav Menu -->
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
-        <!-- Jumbotron -->
-
         <div class=" col-xl-12 text-center blue-grey lighten-5 p-3">
             <div class='container '>
                 <!-- Title -->
@@ -18,39 +16,36 @@
                 <!-- Subtitle -->
                 <p class="indigo-text  font-weight-bold">Stock market at your fingertips</p>
 
-                <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid p-3" alt="">
+                <div class="zoom  overlay">
+                    <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class=" rounded img-fluid p-3 " alt="">
+                </div>
                 <!-- Grid row -->
                 <!-- Grid column -->
                 <p class="indigo-text my-2 font-weight-bold h3">Many Good Reasons to Stick Around</p>
-
                 <div class="row justify-content-around p-3 primary-color ">
-
-                    <div class="col-xl-4">
+                    <div class="col-xl-4 ">
                         <i class="fas fa-server fa-3x text-white"></i>
                         <p class="text-white">99.999% Uptime Guarantee</p>
                     </div>
-
                     <div class="col-xl-4">
                         <i class="fas fa-users fa-3x text-white"></i>
                         <p class="text-white">Great Customer Service</p>
                     </div>
-
                     <div class="col-xl-4">
                         <i class="fas fa-smile fa-3x text-white"></i>
                         <p class="text-white">Guaranteed Satisfaction</p>
                     </div>
                     <!-- Grid column -->
                 </div>
+
                 <!-- Grid row -->
-                <hr class="my-1">
-                <!-- Grid row -->
-                <div class="row d-flex justify-content-center pb-5">
+                <div class="row d-flex justify-content-center pb-5" >
                     <!--Elegant-->
-                    <a type="button" class="btn text-primary" th:href="@{/stocks}">STOCKS</a>
+                    <a type="button" class="btn text-primary" th:href="@{/stocks}">View STOCKS</a>
                     <!--Unique-->
-                    <a type="button" class="btn text-primary" th:href="@{/trades}">TRADES</a>
+                    <a type="button" class="btn text-primary" th:href="@{/trades}">View TRADES</a>
                     <!--Pink-->
-                    <a type="button" class="btn text-primary" th:href="@{/history}">HISTORY</a>
+                    <a type="button" class="btn text-primary" th:href="@{/history}">View HISTORY</a>
                 </div>
             </div>
         </div>

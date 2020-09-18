@@ -27,4 +27,12 @@ public class StockController {
         return "stocks";
     }
 
+    @GetMapping("/stockDetail")
+    public String displayStockDetails(Model model, int stockId) {
+
+        System.out.println("stockId " + stockId);
+
+        return "stockDetail";
+    }
+
 }
