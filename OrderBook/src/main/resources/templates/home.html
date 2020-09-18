@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -8,121 +9,51 @@
         <!-- Nav Menu -->
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
-        <div class='container-fluid'>
-            <div class='flex-row'>
-                <div class='col'>
-                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>STOCKS</h1>
-                    <hr />
+        <div class=" col-xl-12 text-center blue-grey lighten-5 p-3">
+            <div class='container '>
+                <!-- Title -->
+                <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>Order Book Central</h1>
+                <!-- Subtitle -->
+                <p class="indigo-text  font-weight-bold">Stock market at your fingertips</p>
+
+                <div class="zoom  overlay">
+                    <img src="https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class=" rounded img-fluid p-3 " alt="">
+                </div>
+                <!-- Grid row -->
+                <!-- Grid column -->
+                <p class="indigo-text my-2 font-weight-bold h3">Many Good Reasons to Stick Around</p>
+                <div class="row justify-content-around p-3 primary-color ">
+                    <div class="col-xl-4 ">
+                        <i class="fas fa-server fa-3x text-white"></i>
+                        <p class="text-white">99.999% Uptime Guarantee</p>
+                    </div>
+                    <div class="col-xl-4">
+                        <i class="fas fa-users fa-3x text-white"></i>
+                        <p class="text-white">Great Customer Service</p>
+                    </div>
+                    <div class="col-xl-4">
+                        <i class="fas fa-smile fa-3x text-white"></i>
+                        <p class="text-white">Guaranteed Satisfaction</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+
+                <!-- Grid row -->
+                <div class="row d-flex justify-content-center pb-5" >
+                    <!--Elegant-->
+                    <a type="button" class="btn text-primary" th:href="@{/stocks}">View STOCKS</a>
+                    <!--Unique-->
+                    <a type="button" class="btn text-primary" th:href="@{/trades}">View TRADES</a>
+                    <!--Pink-->
+                    <a type="button" class="btn text-primary" th:href="@{/history}">View HISTORY</a>
                 </div>
             </div>
-            <div class='row'>
-               
-                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                    <div class="card hoverable w-100">
-                        <div class="card-body text-center">
-                            <div th:each="stock : ${stocks}">
-                            <h5 class="card-title" th:text="stock">Id</h5>
-                            <p class="card-text" th:text="${stock.ticksize}">TickSize</p>
-                            <p class="card-text" th:text="${stock.party.name}">Party Name</p>
-                            <p class="card-text" th:text="${stock.price}">Price</p>   
-                        </div>
-                    </div>
-                </div>
-<!--                <div class='row'>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">AMAZN</h2>
-                                <p class="brown-lighter-hover font-italic"> Amazon</p>
-                                <p class="brown-lighter-hover font-italic"> Price: $117</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable w-100">
-                            <div class="card-body text-center ">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">NFLX</h2>
-                                <p class="brown-lighter-hover font-italic"> Netflix</p>
-                                <p class="brown-lighter-hover font-italic"> Price: $800</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>
-                                <i class="fas fa-fire fa-3x red-text"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center ">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">TSLA</h2>
-                                <p class="brown-lighter-hover font-italic"> Tesla</p> 
-                                <p class="brown-lighter-hover font-italic"> Price: $117</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>        
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">WMT</h2>
-                                <p class="brown-lighter-hover font-italic"> Walmart</p>  
-                                <p class="brown-lighter-hover font-italic"> Price: $60</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>      
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">NVDA</h2>
-                                <p class="brown-lighter-hover font-italic"> NVIDIA Corporation</p>   
-                                <p class="brown-lighter-hover font-italic"> Price: 766</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>             
-                                <i class="fas fa-fire fa-3x red-text"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">JPM</h2>
-                                <p class="brown-lighter-hover font-italic"> JPMorgan Chase & Co.</p>  
-                                <p class="brown-lighter-hover font-italic"> Price: $124</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>     
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">GOOG</h2>
-                                <p class="brown-lighter-hover font-italic"> Google</p>   
-                                <p class="brown-lighter-hover font-italic"> Price: $100</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>          
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
-                        <div class="card hoverable  w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3 text-center">BABA</h2>
-                                <p class="brown-lighter-hover font-italic"> Alibaba Group Holding Limited</p>   
-                                <p class="brown-lighter-hover font-italic"> Price: $175</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>        
-
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
-            </div>    
-
-            <!-- End main body -->
-            <!-- scripts -->
-            <div th:insert="common :: scripts"></div>
-            <div th:insert="common :: footer"></div>
-    </body>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+    <!-- End main body -->
+    <!-- scripts -->
+    <div th:insert="common :: scripts"></div>
+    <div th:insert="common :: footer"></div>
+</body>
 </html>

@@ -7,10 +7,7 @@ package com.sg.OrderBook.entities;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import javax.persistence.Entity;
 import javax.persistence.*;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
@@ -18,30 +15,30 @@ import javax.persistence.Id;
  */
 @Entity
 public class Trade {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    
+
     @Column
     private int quantity;
-    
+
     @Column
     private java.sql.Timestamp dateTime;
-    
+
     @Column
     private BigDecimal price;
-    
-    
+
     @ManyToOne
-    @JoinColumn(name = "stockId", nullable = false )
+    @JoinColumn(name = "stockId", nullable = false)
     private Stock stock;
-    
+
     @ManyToOne
-    @JoinColumn(name = "buyOrderId", nullable = false )
+    @JoinColumn(name = "buyOrderId", nullable = false)
     private Order buyorder;
-    
+
     @ManyToOne
-    @JoinColumn(name = "sellOrderId", nullable = false )
+    @JoinColumn(name = "sellOrderId", nullable = false)
     private Order sellorder;
 
     public Order getBuyorder() {
@@ -99,6 +96,10 @@ public class Trade {
     public void setStock(Stock stock) {
         this.stock = stock;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Trade{" + "id=" + id + ", quantity=" + quantity + ", dateTime=" + dateTime + ", price=" + price + ", stock=" + stock + ", buyorder=" + buyorder + ", sellorder=" + sellorder + '}';
+    }
+
 }

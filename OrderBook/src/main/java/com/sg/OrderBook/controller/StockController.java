@@ -17,16 +17,22 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class StockController {
+
     @Autowired
     private StockService stocks;
-    
-    @GetMapping("stocks")
-    public String displayStocks(Model model){
-        model.addAttribute("stocks",stocks.findAllStock());
-        System.out.println(stocks.findAllStock().toString());
+
+    @GetMapping("/stocks")
+    public String displayStocks(Model model) {
+        model.addAttribute("stocks", stocks.findAllStock());
         return "stocks";
     }
-    
-    
-    
+
+    @GetMapping("/stockDetail")
+    public String displayStockDetails(Model model, int stockId) {
+
+        System.out.println("stockId " + stockId);
+
+        return "stockDetail";
+    }
+
 }

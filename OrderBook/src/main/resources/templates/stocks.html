@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head -->
+    <div th:insert="common :: htmlHead"></div>
+
+    <body class="grey lighten-5">
+        <!-- Nav Menu -->
+        <div th:replace="common :: navBar"></div>
+        <!-- Main Body of Page -->
+        <div class='container-fluid'>
+            <!-- Header -->
+            <div class='flex-row'>
+                <div class='col'>
+                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>STOCKS</h1>
+                    <hr />
+                </div>
+            </div>
+            <!-- Cards -->
+            <div class='row pb-5'>
+                <div  th:if="${stocks.isEmpty()}" class="col-12  d-flex justify-content-center p-5">
+                    <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                        <div class="card hoverable w-100">
+                            <div class="card-body text-center">
+                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" >There are currently No STOCKS Available</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4" th:each="stock : ${stocks}" >
+                    <a class="card hoverable w-100 " th:href="@{/stockDetail(stockId=${stock.id})}" style='color: inherit;'>
+                        <div class="card-body text-center "  >
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${stock.party.symbol}" >symbol</h2>
+                            <p class="brown-lighter-hover font-italic" th:text="${stock.party.name}"> name</p>
+                            <p class="brown-lighter-hover font-italic" th:text="${ '$ ' + stock.price}"> name</p>
+                            <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>   
+                            <i class="fas fa-fire fa-3x red-text"></i>
+                        </div>
+                    </a>
+                </div>    
+            </div>
+            <!-- End main body -->
+            <!-- scripts -->
+            <div th:insert="common :: scripts"></div>
+            <div th:insert="common :: footer"></div>
+    </body>
+</html>
