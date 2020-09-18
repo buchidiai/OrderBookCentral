@@ -11,6 +11,7 @@ import com.sg.OrderBook.entities.History;
 import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.entities.Party;
+import com.sg.OrderBook.entities.Stock;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer>{
     List<Order> findByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime);
+    List<Order> findByStockOrderByPrice(Stock stock);
     List<Order> findBySide(String side);
     List<Order> findByStatus(String status);
     List<Order> findByQuantity(int quantity);

@@ -5,6 +5,7 @@
  */
 package com.sg.OrderBook.entities;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder.In;
@@ -28,10 +29,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    
-    
-       
-    
    
     @Column
     private  String status;
@@ -45,6 +42,9 @@ public class Order {
     
     @Column
     private java.sql.Timestamp datetime;
+    
+    @Column
+    private BigDecimal price;
     
     
     @ManyToOne

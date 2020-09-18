@@ -6,7 +6,9 @@
 package com.sg.OrderBook.service;
 
 import com.sg.OrderBook.entities.Order;
+import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.repositories.OrderRepository;
+import java.io.ObjectInputFilter.Status;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,6 +34,12 @@ public class OrderService {
         
     }
     
+    public List<Order> findOrderStock(Stock stock ){
+       
+        return orders.findByStockOrderByPrice(stock);
+     
+    }
+       
     
     public List<Order> findOrderByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
         
