@@ -10,6 +10,11 @@
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
+            <div class='flex-row'>
+                <div class='col'>
+                    <h1 class='text-center deep-orange-text display-4 bounceIn font-weight-bold ' th:text="${stock.party.name }" ></h1>   
+                </div>
+            </div>
             <!-- stock card -->
             <div class='flex-row'>
                 <div class='col-xl-12 d-flex justify-content-around '>
@@ -30,29 +35,15 @@
                     <div class="d-flex col-xl-4 col-lg-4 col-md-4 col-sm-12 p-5" >
                         <form class="text-center border border-light p-5"  action="addOrder" method="POST">
                             <p class="h4 text-default">Place Order</p>                        
-
                             <select name='side' class="browser-default custom-select mb-1">
                                 <option value="0" selected disabled>SELECT SIDE</option>
                                 <option value="1">BUY</option>
                                 <option value="2">SELL</option>
                             </select>
-
                             <input name='price' type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Amount" min="1" max="1000000">
-
-
-                            <input
-
-                                min="1"
-                                name="quantity"
-                                type="number"
-                                class="form-control mb-2"
-                                placeholder="Quantity"
-                                />
-
+                            <input min="1"  name="quantity"  type="number" class="form-control mb-2" placeholder="Quantity" />
                             <input type="hidden" name="id" th:value="${stock.id}"/>
-
                             <button   class="btn text-default border border-light btn-block unique-color-dark" type="submit">Send</button>
-
                         </form>
                     </div> 
                 </div>
@@ -88,21 +79,48 @@
                                     <td>@mdo</td>
                                     <td>@mdo</td>
                                     <td>
-                                        <a class="fas fa-info-circle"></a>
+                                        <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${1})}" ></a>
                                     </td>
                                     <td>
-                                        <a class="fas fa-window-close text-danger"></a>
-                                    </td>
+                                        <a class="fas fa-window-close text-danger" data-toggle="modal" data-target="#deleteconfirm" ></a>
+                                        <!--Modal: modalConfirmDelete-->
+                                        <div class="modal fade" id="deleteconfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+                                            
+                                            <div class="modal-dialog modal-sm  " role="document">
+                                                <!--Content-->
+                                                <div class="modal-content text-center">
+                                                    <!--Header-->
+                                                    <div class="modal-header d-flex justify-content-center">
+                                                        <p class="heading font-weight-bold"> Cancel Bid ? </p>
+                                                    </div>
+                                                    <!--Body-->
+                                                    <div class="modal-body">
+                                                        <i class="fas fa-times fa-4x animated rotateIn text-danger"></i>
+                                                    </div>
 
+                                                    <!--Footer-->
+                                                    <div class="modal-footer justify-content-around">
+                                                        <a href="" class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${1} , stockId=${stock.id})}" >Yes</a>
+                                                        <a type="button" class="btn  btn-default waves-effect" data-dismiss="modal">No</a>
+                                                    </div>
+                                                </div>
+                                                <!--/.Content-->
+                                            </div>
+                                        </div>
+                                        <!--Modal: modalConfirmDelete-->
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
-
-
-
                 </div>
+
+
+
+
+
+
+
 
                 <div class="d-flex flex-column col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
 
@@ -154,7 +172,7 @@
                 </div>
 
                 <div>
-                    <table id="dtBasicExample" class="table table-hover table-bordered text-default " width="100%">
+                    <table id="dtBasicExample" class="table  table-bordered text-default " width="100%">
                         <thead class="default-color white-text">
                             <tr>
                                 <th class="th-sm">ID

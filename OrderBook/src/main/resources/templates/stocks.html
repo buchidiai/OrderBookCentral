@@ -10,9 +10,47 @@
         <!-- Main Body of Page -->
         <div class='container-fluid'>
             <!-- Header -->
-            <div class='flex-row'>
-                <div class='col'>
-                    <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>STOCKS</h1>   
+            <div class=' d-flex flex-row justify-content-center align-items-center'>
+
+                <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>STOCKS</h1> 
+
+                <div class='d-flex flex-column pl-5'>
+                    <a class="fas fa-plus   fa-5x text-default" data-toggle="modal" data-target="#addStockForm"></a>
+                </div>
+
+                <div class="modal fade" id="addStockForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                    <form class="modal-dialog" action="addStock" method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold">Add Stock</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-3">
+                                <div class="md-form mb-5">
+                                    <input type="text" name='name' class="form-control validate">
+                                    <label data-error="wrong" data-success="right" >Name</label>
+                                </div>
+                                <div class="md-form mb-5">
+                                    <input type="text" name='symbol' class="form-control validate">
+                                    <label data-error="wrong" data-success="right">Symbol</label>
+                                </div>
+                                <div class="md-form mb-4">
+                                    <input type="number" name='price' class="form-control validate" >
+                                    <label data-error="wrong" data-success="right" >Price</label>
+                                </div>
+                                <div class="md-form mb-4">
+                                    <input type="number" min="0" name='ticksize'  class="form-control validate" step=".01" >
+                                    <label data-error="wrong" data-success="right" >Tick Size</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button class="btn btn-default">ADD</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- Cards -->

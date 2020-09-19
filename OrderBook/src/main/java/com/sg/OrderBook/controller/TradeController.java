@@ -22,9 +22,9 @@ public class TradeController {
     }
 
     @GetMapping("/tradeDetail")
-    public String getTrade(Model model, int id) {
-        System.out.println("id  is " + id);
-        model.addAttribute("id", id);
+    public String getTrade(Model model, int tradeId) {
+        System.out.println("id  is " + tradeId);
+        model.addAttribute("id", tradeId);
         return "tradeDetail";
     }
 

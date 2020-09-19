@@ -26,21 +26,38 @@ public class OrderController {
     private OrderService orders;
 
     @PostMapping("/addOrder")
-    public String displayOrder(@Valid Order order, Model model, RedirectAttributes redirectAttributes) {
+    public String displayOrder(@Valid Order order, Model model, RedirectAttributes redirectAttributes, int stockId) {
 
         System.out.println("order to strdf " + order.toString());
 
-//        redirectAttributes.addAttribute("stockId", order.getStock().getId());
+        redirectAttributes.addAttribute("stockId", stockId);
         return "redirect:stockDetail";
     }
 
     @GetMapping("/orderDetail")
     public String displayOrder(Model model, int orderId) {
 
-        model.addAttribute("order", orders.findOrderById(orderId));
-
-        model.addAttribute("orderTransactions", orders.findOrderById(orderId));
+//        model.addAttribute("order", orders.findOrderById(orderId));
+//
+//        model.addAttribute("orderTransactions", orders.findOrderById(orderId));
         return "orderDetails";
+    }
+
+    @GetMapping("/cancelOrder")
+    public String cancelOrder(Model model, int orderId, int stockId, RedirectAttributes redirectAttributes) {
+
+        System.out.println("orderId " + orderId);
+        System.out.println("stockId " + stockId);
+
+//        //find order
+//        Order order = orders.findOrderById(orderId);
+//
+//        // cancel order -> should cancel not delete
+//        orders.deleteOrderById(stockId);
+        // redirect to stock details
+        redirectAttributes.addAttribute("stockId", stockId);
+
+        return "redirect:stockDetail";
     }
 
 }

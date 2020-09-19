@@ -1,1 +1,100 @@
 
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Head -->
+    <div th:insert="common :: htmlHead"></div>
+
+    <body class="unique-color-dark">
+        <!-- Nav Menu -->
+        <div th:replace="common :: navBar"></div>
+        <!-- Main Body of Page -->
+        <div class='container-fluid'>
+            <!-- stock card -->
+            <div class='flex-row'>
+                <div class='col-xl-12 d-flex justify-content-around '>
+
+                    <div class="d-flex col-xl-4 col-lg-4 col-md-4 col-sm-12 p-5" >
+                        <div class="card hoverable w-100 p-5">
+                            <div class="card-body text-center  p-5">
+                                <div>
+                                    <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  >ID: 1</h2>
+                                </div>
+                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  > 09/12/2020 : 11:23 PM</h2>
+                                <p class="brown-lighter-hover font-italic"  > QUANTITY: 300</p>
+                                <p class="brown-lighter-hover font-italic" > BID: $300</p>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="d-flex flex-column col-xl-12 justify-content-center p-5  ">
+                <div class=" d-flex justify-content-center" >
+                    <p class="h4 text-default">ORDER TRANSACTIONS</p>
+                </div>
+                <div>
+                    <table id="dtBasicExample" class="table table-hover table-bordered text-default " width="100%">
+                        <thead class="default-color white-text">
+                            <tr>
+                                <th class="th-sm">ID
+                                </th>
+                                <th class="th-sm">TIME
+                                </th>
+                                <th class="th-sm">SYMBOL
+                                </th>
+                                <th class="th-sm">NAME
+                                </th>
+                                <th class="th-sm">SIZE
+                                </th>
+                                <th class="th-sm">PRICE
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="searchable ">
+                            <tr th:href="@{/tradeDetail(id=${1})}"  >
+                                <td >1</td>
+                                <td>07/31/2020 12:23 PM</td>
+                                <td>GOOG</td>
+                                <td>GOOGLE</td>
+                                <td>50</td>
+                                <td >$500</td>
+                            </tr>
+                            <tr th:href="@{/tradeDetail(id=${32})}">
+                                <td >32</td>
+                                <td>09/12/2019 4:00 PM</td>
+                                <td>AMAZN</td>
+                                <td>AMAZON</td>
+                                <td>300</td>
+                                <td>$5000</td>
+                            </tr>
+                            <tr>
+                                <td >43</td>
+                                <td>02/15/2021 1:15 PM</td>
+                                <td>NFLX</td>
+                                <td>NETFLIX</td>
+                                <td>120</td>
+                                <td>$279</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+        <!-- End main body -->
+        <!-- scripts -->
+        <div th:insert="common :: scripts"></div>
+        <script  src="index.js"></script>
+        <div th:insert="common :: footer"></div>
+    </body>
+</html>
+
