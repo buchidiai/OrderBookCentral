@@ -5,161 +5,140 @@
     <!-- Head -->
     <div th:insert="common :: htmlHead"></div>
 
-    <body class="grey lighten-5">
+    <body class="unique-color-dark">
         <!-- Nav Menu -->
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
-        <div class='container-fluid '>
+        <div class='container-fluid'>
             <!-- stock card -->
             <div class='flex-row'>
-                <div class='d-flex justify-content-center '>
-                    <div class="d-flex col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4" >
-                        <div class="card hoverable w-100">
-                            <div class="card-body text-center">
-                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  >AMAZ</h2>
-                                <p class="brown-lighter-hover font-italic" > AMAZON</p>
-                                <p class="brown-lighter-hover font-italic" > price</p>
-                                <p class="brown-lighter-hover font-weight-light">Market Cap: 1,580.87B</p>   
-                                <i class="fas fa-fire fa-3x red-text"></i>
+                <div class='d-flex justify-content-around '>
+
+                    <div class="d-flex col-xl-4 col-lg-4 col-md-3 col-sm-12 p-5" >
+                        <div class="card hoverable w-100 p-5">
+                            <div class="card-body text-center  p-5">
+                                <div>
+                                        <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${stock.id}"  >id</h2>
+                                </div>
+                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${stock.party.symbol}"  >symbol</h2>
+                                <p class="brown-lighter-hover font-italic" th:text="${stock.party.name}" > name</p>
+                                <p class="brown-lighter-hover font-italic" th:text="${ '$ ' + stock.price}" > price</p>
                             </div>
                         </div>
                     </div>   
+                    <div class="d-flex col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4" >
+                        <!-- Default form contact -->
+                        <form class="text-center border border-light p-5"  action="tradeOrder" method="POST">
+                            <p class="h4 text-default">Place Order</p>
+                            <!-- side -->
+                            
+                            <select class="browser-default custom-select mb-1">
+                                <option value="0" selected disabled>SELECT SIDE</option>
+                                <option value="1">BUY</option>
+                                <option value="2">SELL</option>
+                            </select>
+                            <!-- amount -->
+                            <input type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Amount">
+
+                            <!-- Subject -->
+                             <input
+                                        id="form1"
+                                        min="1"
+                                        name="quantity"
+                                        type="number"
+                                        class="form-control mb-2"
+                                        placeholder="Quantity"
+                                        />
+
+
+                            <!-- Send button -->
+                            <button class="btn text-default border border-light btn-block unique-color-dark" type="submit">Send</button>
+
+                        </form>
+                        <!-- Default form contact -->
+                    </div>  
                 </div>
             </div>
 
             <div class="row d-flex justify-content-around">
-                <div class="d-flex col-xl-5 col-lg-4 col-md-3 col-sm-12 p-4 danger-color " >
-                    <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
-                        <thead class="primary-color white-text">
-                            <tr>
-                                <th class="th-sm">ID
-                                </th>
-                                <th class="th-sm">TIME
-                                </th>
-                                <th class="th-sm">SYMBOL
-                                </th>
-                                <th class="th-sm">NAME
-                                </th>
-                                <th class="th-sm">SIZE
-                                </th>
-                                <th class="th-sm">PRICE
-                                </th>
+                <div class="d-flex col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
+                    <table class="table table-striped ">
+                        <thead class="default-color">
+                            <tr >
+                                <th scope="col">#</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Bid</th>
+
                             </tr>
                         </thead>
-                        <tbody class="searchable ">
-                            <tr th:href="@{/tradeDetail(id=${1})}"  >
-                                <td >1</td>
-                                <td>07/31/2020 12:23 PM</td>
-                                <td>GOOG</td>
-                                <td>GOOGLE</td>
-                                <td>50</td>
-                                <td >$500</td>
-                            </tr>
-                            <tr th:href="@{/tradeDetail(id=${32})}">
-                                <td >32</td>
-                                <td>09/12/2019 4:00 PM</td>
-                                <td>AMAZN</td>
-                                <td>AMAZON</td>
-                                <td>300</td>
-                                <td>$5000</td>
+                        <tbody class="text-default white">
+                            <tr >
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
                             </tr>
                             <tr>
-                                <td >43</td>
-                                <td>02/15/2021 1:15 PM</td>
-                                <td>NFLX</td>
-                                <td>NETFLIX</td>
-                                <td>120</td>
-                                <td>$279</td>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>@mdo</td>
                             </tr>
-
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@mdo</td>
+                            </tr>
                         </tbody>
-                        <tfoot class="primary-color white-text">
-                            <tr>
-                                <th>ID
-                                </th>
-                                <th>TIME
-                                </th>
-                                <th>SYMBOL
-                                </th>
-                                <th>NAME
-                                </th>
-                                <th>SIZE
-                                </th>
-                                <th>PRICE
-                                </th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
 
-                <div class="d-flex col-xl-5 col-lg-4 col-md-3 col-sm-12 p-4 warning-color" >
-                    <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
-                        <thead class="primary-color white-text">
+                <div class="d-flex col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex  " >
+                    <table class="table table-striped">
+                        <thead class="default-color">
                             <tr>
-                                <th class="th-sm">ID
-                                </th>
-                                <th class="th-sm">TIME
-                                </th>
-                                <th class="th-sm">SYMBOL
-                                </th>
-                                <th class="th-sm">NAME
-                                </th>
-                                <th class="th-sm">SIZE
-                                </th>
-                                <th class="th-sm">PRICE
-                                </th>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
                             </tr>
                         </thead>
-                        <tbody class="searchable ">
-                            <tr th:href="@{/tradeDetail(id=${1})}"  >
-                                <td >1</td>
-                                <td>07/31/2020 12:23 PM</td>
-                                <td>GOOG</td>
-                                <td>GOOGLE</td>
-                                <td>50</td>
-                                <td >$500</td>
-                            </tr>
-                            <tr th:href="@{/tradeDetail(id=${32})}">
-                                <td >32</td>
-                                <td>09/12/2019 4:00 PM</td>
-                                <td>AMAZN</td>
-                                <td>AMAZON</td>
-                                <td>300</td>
-                                <td>$5000</td>
+                        <tbody class="text-default white">
+                            <tr class="font-weight-bold" >
+                                <td>1</td>
+                                <td>John</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
                             </tr>
                             <tr>
-                                <td >43</td>
-                                <td>02/15/2021 1:15 PM</td>
-                                <td>NFLX</td>
-                                <td>NETFLIX</td>
-                                <td>120</td>
-                                <td>$279</td>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
                             </tr>
-
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
                         </tbody>
-                        <tfoot class="primary-color white-text">
-                            <tr>
-                                <th>ID
-                                </th>
-                                <th>TIME
-                                </th>
-                                <th>SYMBOL
-                                </th>
-                                <th>NAME
-                                </th>
-                                <th>SIZE
-                                </th>
-                                <th>PRICE
-                                </th>
-                            </tr>
-                        </tfoot>
                     </table>
+
+
+
                 </div>
 
             </div>
 
             <div class="row d-flex col-xl-12 justify-content-center p-5 ">
-                <div class="d-flex col-xl-8 justify-content-center  default-color ">
+                <div class="d-flex col-xl-8 justify-content-center ">
                     <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
                         <thead class="primary-color white-text">
                             <tr>
@@ -234,6 +213,7 @@
         <!-- End main body -->
         <!-- scripts -->
         <div th:insert="common :: scripts"></div>
+        <script  src="index.js"></script>
         <div th:insert="common :: footer"></div>
     </body>
 </html>

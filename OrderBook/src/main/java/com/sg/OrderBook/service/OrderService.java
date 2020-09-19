@@ -8,73 +8,72 @@ package com.sg.OrderBook.service;
 import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.repositories.OrderRepository;
-import java.io.ObjectInputFilter.Status;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author zeenatbaig
  */
+@Service
 public class OrderService {
 
     @Autowired
     private OrderRepository orders;
-    
-    
-    public void saveOrder(Order order){
-        
-      orders.save(order);
-        
+
+    public void saveOrder(Order order) {
+
+        orders.save(order);
+
     }
-    
-    public List<Order> findAllOrders(){
-        
-      return orders.findAll();
-        
+
+    public List<Order> findAllOrders() {
+
+        return orders.findAll();
+
     }
-    
-    public List<Order> findOrderStock(Stock stock ){
-       
+
+    public List<Order> findOrderStock(Stock stock) {
+
         return orders.findByStockOrderByPrice(stock);
-     
+
     }
-       
-    
-    public List<Order> findOrderByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime){
-        
+
+    public List<Order> findOrderByDatetimeOrderByDatetimeAsc(java.sql.Timestamp datetime) {
+
         return orders.findByDatetimeOrderByDatetimeAsc(datetime);
-       
+
     }
-    
-    public List<Order> findOrderBySide(String side){
-        
+
+    public List<Order> findOrderBySide(String side) {
+
         return orders.findBySide(side);
-   
+
     }
-    public List<Order> findOrderByStatus(String status){
-        
+
+    public List<Order> findOrderByStatus(String status) {
+
         return orders.findByStatus(status);
-    
+
     }
-    public List<Order> findOrderByQuantity(int quantity){
-       
+
+    public List<Order> findOrderByQuantity(int quantity) {
+
         return orders.findByQuantity(quantity);
-     
+
     }
-    
-    public Order findOrderById(int id){
-       
-        return  orders.findById(id).orElse(null);
-        
-        
-       
+
+    public Order findOrderById(int id) {
+
+        return orders.findById(id).orElse(null);
+
     }
-    
-    public void deleteOrderById(int id){
-      
-         orders.deleteById(id);
-        
+
+    public void deleteOrderById(int id) {
+
+        orders.deleteById(id);
+
     }
-    
+
 }

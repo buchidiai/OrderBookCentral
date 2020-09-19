@@ -8,47 +8,43 @@ package com.sg.OrderBook.entities;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder.In;
 
 /**
  *
  * @author anmol
  */
- 
-	enum Status {
+enum Status {
     INPROGRESS, COMPLETED, CANCELLED;
 }
+
 enum Side {
-    BUY,SELL;
+    BUY, SELL;
 }
 
 @Entity
 public class Order {
-    
-  
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-   
+
     @Column
-    private  String status;
-    
-    
-     @Column
+    private String status;
+
+    @Column
     private String side;
-    
+
     @Column
     private int quantity;
-    
+
     @Column
     private java.sql.Timestamp datetime;
-    
+
     @Column
     private BigDecimal price;
-    
-    
+
     @ManyToOne
-    @JoinColumn(name = "stockId", nullable = false )
+    @JoinColumn(name = "stockId", nullable = false)
     private Stock stock;
 
     public int getId() {
@@ -58,7 +54,6 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getStatus() {
         return status;

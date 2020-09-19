@@ -5,6 +5,8 @@
  */
 package com.sg.OrderBook.controller;
 
+import com.sg.OrderBook.entities.Stock;
+import com.sg.OrderBook.service.OrderService;
 import com.sg.OrderBook.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +23,12 @@ public class StockController {
     @Autowired
     private StockService stocks;
 
+    @Autowired
+    private OrderService orders;
+
     @GetMapping("/stocks")
     public String displayStocks(Model model) {
+
         model.addAttribute("stocks", stocks.findAllStock());
         return "stocks";
     }
@@ -30,7 +36,13 @@ public class StockController {
     @GetMapping("/stockDetail")
     public String displayStockDetails(Model model, int stockId) {
 
-        System.out.println("stockId " + stockId);
+        Stock stock = stocks.findStockById(stockId);
+
+        model.addAttribute("stock", stock);
+
+        model.addAttribute("orders", orders.findOrderStock(stock));
+
+        System.out.println(" orders.findOrderStock(stock) " + orders.findOrderStock(stock));
 
         return "stockDetail";
     }
