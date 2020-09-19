@@ -95,4 +95,9 @@ public class Order {
         this.stock = stock;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", status=" + status + ", side=" + side + ", quantity=" + quantity + ", datetime=" + datetime + ", price=" + price + ", stock=" + stock + '}';
+    }
+
 }

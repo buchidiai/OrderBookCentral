@@ -38,11 +38,9 @@ public class StockController {
 
         Stock stock = stocks.findStockById(stockId);
 
+        System.out.println("stock " + stock.toString());
+
         model.addAttribute("stock", stock);
-
-        model.addAttribute("orders", orders.findOrderStock(stock));
-
-        System.out.println(" orders.findOrderStock(stock) " + orders.findOrderStock(stock));
 
         return "stockDetail";
     }

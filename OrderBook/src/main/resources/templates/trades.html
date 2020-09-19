@@ -10,14 +10,15 @@
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
-            <div class='flex-row p-3'>
+            <div class='flex-row'>
                 <div class='col'>
-                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>TRADES</h1>
-                    <hr />
+                    <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>TRADES</h1>   
                 </div>
             </div>
-            <table id="dtBasicExample" class="table table-hover table-bordered " width="100%">
-                <thead class="primary-color white-text">
+        </div>
+        <div class="p-5">
+            <table id="dtBasicExample" class="table table-hover table-bordered text-default " width="100%">
+                <thead class="default-color white-text">
                     <tr>
                         <th class="th-sm">ID
                         </th>
@@ -60,31 +61,17 @@
                     </tr>
 
                 </tbody>
-                <tfoot class="primary-color white-text">
-                    <tr>
-                        <th>ID
-                        </th>
-                        <th>TIME
-                        </th>
-                        <th>SYMBOL
-                        </th>
-                        <th>NAME
-                        </th>
-                        <th>SIZE
-                        </th>
-                        <th>PRICE
-                        </th>
-                    </tr>
-                </tfoot>
+
             </table>
         </div>
-    </div>    
+    </div>
+</div>    
 
-    <!-- End main body -->
-    <!-- scripts -->
+<!-- End main body -->
+<!-- scripts -->
 
-    <div th:insert="common :: scripts"></div>
-    <script  src="index.js"></script>
-    <div th:insert="common :: footer"></div>
+<div th:insert="common :: scripts"></div>
+<script  src="index.js"></script>
+<div th:insert="common :: footer"></div>
 </body>
 </html>
