@@ -1,7 +1,7 @@
 use orderBook;
 
 
--- INSERT INTO party (name,symbol) VALUES ('AAPL','APPLE');
+-- INSERT INTO party (name,symbol) VALUES ('Apple','AAPL');
 -- INSERT INTO party (name,symbol) VALUES ( 'Amazon','AMAZN');
 -- INSERT INTO party (name,symbol) VALUES ( 'Netflix','NFLX');
 -- INSERT INTO party (name,symbol) VALUES ('Tesla','TSLA');

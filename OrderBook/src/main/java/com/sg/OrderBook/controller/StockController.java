@@ -56,8 +56,6 @@ public class StockController {
 
         Stock stock = stocks.findStockById(stockId);
 
-        System.out.println("stock " + stock.toString());
-
         model.addAttribute("stock", stock);
 
         return "stockDetail";

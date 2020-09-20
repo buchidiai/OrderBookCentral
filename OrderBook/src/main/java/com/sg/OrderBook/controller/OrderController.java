@@ -7,7 +7,6 @@ package com.sg.OrderBook.controller;
 
 import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.service.OrderService;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +25,20 @@ public class OrderController {
     private OrderService orders;
 
     @PostMapping("/addOrder")
-    public String displayOrder(@Valid Order order, Model model, RedirectAttributes redirectAttributes, int stockId) {
+    public String addOrder(Order order, Model model, RedirectAttributes redirectAttributes, Integer stockId) {
+
+        if (order.getSide().equals("1")) {
+            order.setSide("BUY");
+        } else if (order.getSide().equals("2")) {
+            order.setSide("SELL");
+        }
 
         System.out.println("order to strdf " + order.toString());
 
+        //get stock
+        //add stock to order object
+        //save order
+        //add to order transaction
         redirectAttributes.addAttribute("stockId", stockId);
         return "redirect:stockDetail";
     }
@@ -40,7 +49,7 @@ public class OrderController {
 //        model.addAttribute("order", orders.findOrderById(orderId));
 //
 //        model.addAttribute("orderTransactions", orders.findOrderById(orderId));
-        return "orderDetails";
+        return "orderDetail";
     }
 
     @GetMapping("/cancelOrder")

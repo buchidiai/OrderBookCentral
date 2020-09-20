@@ -16,54 +16,70 @@
                 </div>
             </div>
         </div>
-        <div class="p-5">
-            <table id="dtBasicExample" class="table table-hover table-bordered text-default " width="100%">
-                <thead class="default-color white-text">
-                    <tr>
-                        <th class="th-sm">ID
-                        </th>
-                        <th class="th-sm">TIME
-                        </th>
-                        <th class="th-sm">SYMBOL
-                        </th>
-                        <th class="th-sm">NAME
-                        </th>
-                        <th class="th-sm">SIZE
-                        </th>
-                        <th class="th-sm">PRICE
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="searchable ">
-                    <tr th:href="@{/tradeDetail(id=${1})}"  >
-                        <td >1</td>
-                        <td>07/31/2020 12:23 PM</td>
-                        <td>GOOG</td>
-                        <td>GOOGLE</td>
-                        <td>50</td>
-                        <td >$500</td>
-                    </tr>
-                    <tr th:href="@{/tradeDetail(id=${32})}">
-                        <td >32</td>
-                        <td>09/12/2019 4:00 PM</td>
-                        <td>AMAZN</td>
-                        <td>AMAZON</td>
-                        <td>300</td>
-                        <td>$5000</td>
-                    </tr>
-                    <tr>
-                        <td >43</td>
-                        <td>02/15/2021 1:15 PM</td>
-                        <td>NFLX</td>
-                        <td>NETFLIX</td>
-                        <td>120</td>
-                        <td>$279</td>
-                    </tr>
+       <div class=" d-flex flex-column col-xl-12 col-xl-6 col-lg-4 col-md-3 col-sm-12 text-nowrap ">
 
-                </tbody>
 
-            </table>
-        </div>
+
+                <div class="d-flex justify-content-center table-responsive text-nowrap">
+                    <table id="dtBasicExample" class="table table-bordered  text-default text-center " width="100%">
+                        <thead class="default-color white-text">
+                            <tr>
+                                <th class="th-sm">ID
+                                </th>
+                                <th class="th-sm">TIME
+                                </th>
+                                <th class="th-sm">SYMBOL
+                                </th>
+                                <th class="th-sm">NAME
+                                </th>
+                                <th class="th-sm">SIZE
+                                </th>
+                                <th class="th-sm">PRICE
+                                </th>
+                                <th class="th-sm">DETAILS
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="searchable ">
+                            <tr>
+                                <td >1</td>
+                                <td>07/31/2020 12:23 PM</td>
+                                <td>GOOG</td>
+                                <td>GOOGLE</td>
+                                <td>50</td>
+                                <td >$500</td>
+                                <td>
+                                    <a class="fas fa-info-circle" th:href="@{/tradeDetail(tradeId=${1})}"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >32</td>
+                                <td>09/12/2019 4:00 PM</td>
+                                <td>AMAZN</td>
+                                <td>AMAZON</td>
+                                <td>300</td>
+                                <td>$5000</td>
+                                <td>
+                                    <a class="fas fa-info-circle"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >43</td>
+                                <td>02/15/2021 1:15 PM</td>
+                                <td>NFLX</td>
+                                <td>NETFLIX</td>
+                                <td>120</td>
+                                <td>$279</td>
+                                <td>
+                                    <a class="fas fa-info-circle"></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
     </div>
 </div>    
 
