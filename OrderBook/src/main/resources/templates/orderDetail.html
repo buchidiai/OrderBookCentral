@@ -10,13 +10,18 @@
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
+               <div class='flex-row p-3'>
+                <div class='col'>
+                    <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>ORDER DETAIL</h1> 
+                </div>
+            </div>
             <!-- stock card -->
-            <div class='flex-row'>
-                <div class='col-xl-12 d-flex justify-content-around '>
+<!--            <div class='flex-row'>
+                <div class='col-xl-12 d-flex justify-content-around py-4'>
 
-                    <div class="d-flex col-xl-4 col-lg-6 col-md-6 col-sm-12 p-5" >
+                    <div class="d-flex col-xl-4 col-lg-6 col-md-6 col-sm-12" >
                         <div class="card hoverable w-100 p-5">
-                            <div class="card-body text-center  p-5">
+                            <div class="card-body text-center ">
                                 <div>
                                     <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  >ID: 1</h2>
                                 </div>
@@ -26,6 +31,21 @@
                             </div>
                         </div>
                     </div>  
+                </div>
+            </div>-->
+            
+               <div class='row d-flex justify-content-center'>
+                <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
+                    <div class="card hoverable w-100">
+                        <div class="card-body text-center">
+                            <div>
+                                    <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  >ID: 1</h2>
+                                </div>
+                                <p class="brown-lighter-hover font-italic"  > 09/12/2020 : 11:23 PM</p>
+                                <p class="brown-lighter-hover font-italic"  > QUANTITY: 300</p>
+                                <p class="brown-lighter-hover font-italic" > BID: $300</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

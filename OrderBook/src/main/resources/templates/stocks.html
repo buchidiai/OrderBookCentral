@@ -38,10 +38,6 @@
                                     <label data-error="wrong" data-success="right">Symbol</label>
                                 </div>
                                 <div class="md-form mb-4">
-                                    <input type="number" name='price' class="form-control validate" >
-                                    <label data-error="wrong" data-success="right" >Price</label>
-                                </div>
-                                <div class="md-form mb-4">
                                     <input type="number" min="0" name='ticksize'  class="form-control validate" step=".01" >
                                     <label data-error="wrong" data-success="right" >Tick Size</label>
                                 </div>
@@ -69,7 +65,7 @@
                         <div class="card-body text-center default-color "  >
                             <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${stock.party.symbol}" >symbol</h2>
                             <p class="brown-lighter-hover font-italic" th:text="${stock.party.name}"> name</p>
-                            <p class="brown-lighter-hover font-italic" th:text="${ '$ ' + stock.price}"> name</p>
+                          
                         </div>
                     </a>
                 </div>    
