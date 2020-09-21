@@ -70,6 +70,7 @@ public class OrderController {
 
         orderTransactions.saveOrderTransaction(orderTransaction);
 
+        
         redirectAttributes.addAttribute("stockId", stockId);
         return "redirect:stockDetail";
     }

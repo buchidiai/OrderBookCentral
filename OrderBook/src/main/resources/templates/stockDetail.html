@@ -211,8 +211,8 @@
                                 <td th:text="${trade.datetime}">07/31/2020 12:23 PM</td>
                                 <td th:text="${trade.stock.symbol}">GOOG</td>
                                 <td th:text="${trade.stock.name}">GOOGLE</td>
-                                <td th:text="${trade.stock.quantity}">50</td>
-                                <td th:text="${trade.stock.price}">$500</td>
+                                <td th:text="${trade.quantity}">50</td>
+                                <td th:text="${trade.price}">$500</td>
                                 <td>
                                     <a class="fas fa-info-circle" th:href="@{/tradeDetail(tradeId=${1})}"></a>
                                 </td>
