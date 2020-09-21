@@ -5,21 +5,16 @@
  */
 package com.sg.OrderBook.repositories;
 
-import com.sg.OrderBook.entities.Party;
-import java.util.List;
+import com.sg.OrderBook.entities.OrderTransaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author anmol
+ * @author louie
  */
-
-
 @Repository
-public interface PartyRepository extends JpaRepository<Party, Integer>{
-    List<Party> findByName(String Name);
-    
-    
-    
+public interface OrderTransactionRepository extends JpaRepository<OrderTransaction, Integer> {
+
+//    List<OrderTransaction> findByStockOrder(StockOrder stockOrder);
 }

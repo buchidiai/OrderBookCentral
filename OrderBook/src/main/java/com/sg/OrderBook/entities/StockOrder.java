@@ -15,17 +15,23 @@ import javax.persistence.*;
  * @author anmol
  */
 @Entity
-public class Trade {
+public class StockOrder {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
 
     @Column
+    private String status;
+
+    @Column
+    private String side;
+
+    @Column
     private int quantity;
 
     @Column
-    private java.sql.Timestamp datetime;
+    private Timestamp datetime;
 
     @Column
     private BigDecimal price;
@@ -34,20 +40,28 @@ public class Trade {
     @JoinColumn(name = "stockId", nullable = false)
     private Stock stock;
 
-    @ManyToOne
-    @JoinColumn(name = "buyOrderId", nullable = false)
-    private StockOrder buyorder;
-
-    @ManyToOne
-    @JoinColumn(name = "sellOrderId", nullable = false)
-    private StockOrder sellorder;
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
     }
 
     public int getQuantity() {
@@ -82,32 +96,16 @@ public class Trade {
         this.stock = stock;
     }
 
-    public StockOrder getBuyorder() {
-        return buyorder;
-    }
-
-    public void setBuyorder(StockOrder buyorder) {
-        this.buyorder = buyorder;
-    }
-
-    public StockOrder getSellorder() {
-        return sellorder;
-    }
-
-    public void setSellorder(StockOrder sellorder) {
-        this.sellorder = sellorder;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + this.id;
-        hash = 53 * hash + this.quantity;
-        hash = 53 * hash + Objects.hashCode(this.datetime);
-        hash = 53 * hash + Objects.hashCode(this.price);
-        hash = 53 * hash + Objects.hashCode(this.stock);
-        hash = 53 * hash + Objects.hashCode(this.buyorder);
-        hash = 53 * hash + Objects.hashCode(this.sellorder);
+        int hash = 7;
+        hash = 89 * hash + this.id;
+        hash = 89 * hash + Objects.hashCode(this.status);
+        hash = 89 * hash + Objects.hashCode(this.side);
+        hash = 89 * hash + this.quantity;
+        hash = 89 * hash + Objects.hashCode(this.datetime);
+        hash = 89 * hash + Objects.hashCode(this.price);
+        hash = 89 * hash + Objects.hashCode(this.stock);
         return hash;
     }
 
@@ -122,11 +120,17 @@ public class Trade {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Trade other = (Trade) obj;
+        final StockOrder other = (StockOrder) obj;
         if (this.id != other.id) {
             return false;
         }
         if (this.quantity != other.quantity) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.side, other.side)) {
             return false;
         }
         if (!Objects.equals(this.datetime, other.datetime)) {
@@ -138,18 +142,12 @@ public class Trade {
         if (!Objects.equals(this.stock, other.stock)) {
             return false;
         }
-        if (!Objects.equals(this.buyorder, other.buyorder)) {
-            return false;
-        }
-        if (!Objects.equals(this.sellorder, other.sellorder)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Trade{" + "id=" + id + ", quantity=" + quantity + ", datetime=" + datetime + ", price=" + price + ", stock=" + stock + ", buyorder=" + buyorder + ", sellorder=" + sellorder + '}';
+        return "StockOrder{" + "id=" + id + ", status=" + status + ", side=" + side + ", quantity=" + quantity + ", datetime=" + datetime + ", price=" + price + ", stock=" + stock + '}';
     }
 
 }

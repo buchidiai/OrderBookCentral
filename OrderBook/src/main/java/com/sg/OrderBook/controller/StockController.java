@@ -5,11 +5,13 @@
  */
 package com.sg.OrderBook.controller;
 
-import com.sg.OrderBook.entities.Party;
 import com.sg.OrderBook.entities.Stock;
-import com.sg.OrderBook.service.OrderService;
-import com.sg.OrderBook.service.PartyService;
+import com.sg.OrderBook.entities.StockOrder;
+import com.sg.OrderBook.entities.Trade;
+import com.sg.OrderBook.service.StockOrderService;
 import com.sg.OrderBook.service.StockService;
+import com.sg.OrderBook.service.TradeService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,17 +29,13 @@ public class StockController {
     private StockService stocks;
 
     @Autowired
-    private PartyService partys;
+    private StockOrderService orders;
 
     @Autowired
-    private OrderService orders;
+    private TradeService trades;
 
     @PostMapping("/addStock")
-    public String addStock(Stock stock, Party party, Model model) {
-
-        partys.saveParty(party);
-
-        stock.setParty(party);
+    public String addStock(Stock stock, Model model) {
 
         stocks.saveStock(stock);
 
@@ -56,6 +54,16 @@ public class StockController {
 
         Stock stock = stocks.findStockById(stockId);
 
+        //get orders of stock
+        List<StockOrder> buyOrder = orders.findOrdersByStockIdAndSideAndpriceDesc(stock, "BUY", "IN-PROGRESS");
+
+        List<StockOrder> sellOrder = orders.findOrdersByStockIdAndSideAndpriceAsc(stock, "SELL", "IN-PROGRESS");
+
+        List<Trade> stockTrades = trades.findTradeByStock(stock);
+
+        model.addAttribute("buyOrders", buyOrder);
+        model.addAttribute("sellOrders", sellOrder);
+        model.addAttribute("trades", stockTrades);
         model.addAttribute("stock", stock);
 
         return "stockDetail";

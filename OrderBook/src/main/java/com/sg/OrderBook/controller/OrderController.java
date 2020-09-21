@@ -5,8 +5,8 @@
  */
 package com.sg.OrderBook.controller;
 
-import com.sg.OrderBook.entities.Order;
-import com.sg.OrderBook.service.OrderService;
+import com.sg.OrderBook.entities.StockOrder;
+import com.sg.OrderBook.service.StockOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +22,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OrderController {
 
     @Autowired
-    private OrderService orders;
+    private StockOrderService orders;
 
     @PostMapping("/addOrder")
-    public String addOrder(Order order, Model model, RedirectAttributes redirectAttributes, int stockId) {
+    public String addOrder(StockOrder order, Model model, RedirectAttributes redirectAttributes, int stockId) {
 
         if (order.getSide().equals("1")) {
             order.setSide("BUY");
