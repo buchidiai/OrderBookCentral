@@ -6,30 +6,96 @@
     <!-- Head -->
     <div th:insert="common :: htmlHead"></div>
 
-    <body class="grey lighten-5">
+    <body class="unique-color-dark">
         <!-- Nav Menu -->
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
             <div class='flex-row p-3'>
                 <div class='col'>
-                    <h1 class='text-center text-primary display-1 bounceIn font-weight-bold'>TRADE DETAIL</h1>
-                    <hr />
+                    <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>TRADE DETAIL</h1> 
                 </div>
             </div>
-
-            <div class='row'>
+            <div class='row d-flex justify-content-center'>
                 <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
                     <div class="card hoverable w-100">
                         <div class="card-body text-center">
-                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">TRADE ID : 1</h2>
-                            <p class="brown-lighter-hover font-italic"> BUY ORDER ID : 23</p>
-                            <p class="brown-lighter-hover font-italic"> SELL ORDER ID : 45</p>
+                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">ID: 1</h2>
                             <p class="brown-lighter-hover font-italic"> DATE TIME : 07/31/2020 12:23 PM </p>
-                             <p class="brown-lighter-hover font-italic"> DATE TIME : 07/31/2020 12:23 PM </p>
+                             <p class="brown-lighter-hover font-italic"> Quantity : 50 </p>
+                            <p class="brown-lighter-hover font-italic"> Price : $300 </p>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+             <div class="row d-flex justify-content-around">
+
+                <div class="d-flex flex-column col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
+
+                    <div class="d-flex justify-content-center">
+                        <p class="h4 text-default">BUY ORDER</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <table class="table table-striped text-center " >
+                            <thead class="default-color ">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Bid</th>
+                                  
+
+                                </tr>
+                            </thead>
+                            <tbody class="text-default white ">
+                                <tr>
+                                    <td >1</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="d-flex flex-column col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
+
+                    <div class="d-flex justify-content-center">
+                        <p class="h4 text-default">SELL ORDER</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <table class="table table-striped text-center ">
+                            <thead class="default-color ">
+                                <tr >
+                                    <th scope="col">#</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Offer</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody class="text-default white">
+                                <tr >
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Otto</td>
+                                    <td>Otto</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>    

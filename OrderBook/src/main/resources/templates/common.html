@@ -26,7 +26,7 @@
     <!-- navBar-->
     <nav th:fragment="navBar">
         <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark blue-gradient">
+        <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
             <!-- Navbar brand -->
             <a class="fas fa-chart-line text-white fa-2x" th:href="@{/}" ></a>
             <a class="navbar-brand p-3" th:href="@{/}" >Order Book Central</a>
@@ -41,16 +41,13 @@
             <div class="collapse navbar-collapse" id="basicExampleNav">
                 <!-- Links -->
                 <ul class="navbar-nav mr-auto ">
-                    <li class="nav-item active pr-3">
-                        <a class="nav-link" th:href="@{/stocks}">Stocks
+                    <li class="nav-item active pr-3 ">
+                        <a class="nav-link deep-orange-text" th:href="@{/stocks}">STOCKS
 
                         </a>
                     </li>
                     <li class="nav-item active pr-3">
-                        <a class="nav-link" th:href="@{/trades}">Trades</a>
-                    </li>
-                    <li class="nav-item active pr-3">
-                        <a class="nav-link" th:href="@{/history}">History</a>
+                        <a class="nav-link deep-orange-text" th:href="@{/trades}">TRADES</a>
                     </li>
                 </ul>
             </div>
@@ -58,23 +55,6 @@
         </nav>
     </nav>
 
-    <!-- page header-->
-    <div th:fragment="pageHeader">
-        <div class='row'>
-            <div class='col-12 '>
-                <h1 class='text-center text-dark display-1' th:text="${title}"></h1>
-                <hr />
-            </div>
-        </div>
-    </div>
-
-    <div  th:fragment="headerAndCount" >
-        <div class='pt-3 row text-center d-flex justify-content-center'>
-            <h3 class='text-center text-dark pr-1' th:text="${title}"></h3>
-            <h3 class='text-center text-dark' th:text="${'(' + #arrays.length(count) + ')'}"></h3>
-        </div>
-        <hr />
-    </div>
 
     <!-- scripts-->
     <div th:fragment="scripts">
@@ -88,9 +68,10 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script> 
         <!-- datatables js -->
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"  ></script>
+       
     </div>
 
-    <footer class="font-small blue fixed-bottom" th:fragment="footer">
+    <footer class="font-small unique-color-dark fixed-bottom" th:fragment="footer">
         <!-- Copyright -->
         <div class="footer-copyright text-center p-1">
             <p class=' text-white'>&copy; 2020 orderbookcentral.com</p>

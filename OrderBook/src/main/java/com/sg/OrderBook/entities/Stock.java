@@ -5,29 +5,25 @@
  */
 package com.sg.OrderBook.entities;
 
-import java.math.BigDecimal;
+import java.util.Objects;
 import javax.persistence.*;
 
 /**
  *
  * @author anmol
  */
-
 @Entity
 public class Stock {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    
+
     @Column
-    private BigDecimal ticksize;
-    
+    private String name;
+
     @Column
-    private BigDecimal price;
-    
-    @ManyToOne
-    @JoinColumn(name = "partyId", nullable = false )
-    private Party party;
+    private String symbol;
 
     public int getId() {
         return id;
@@ -37,37 +33,58 @@ public class Stock {
         this.id = id;
     }
 
-    public BigDecimal getTicksize() {
-        return ticksize;
+    public String getName() {
+        return name;
     }
 
-    public void setTicksize(BigDecimal ticksize) {
-        this.ticksize = ticksize;
+    public void setName(String name) {
+        this.name = name;
     }
 
-   
-
-    public BigDecimal getPrice() {
-        return price;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
-    public Party getParty() {
-        return party;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.symbol);
+        return hash;
     }
 
-    public void setParty(Party party) {
-        this.party = party;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stock other = (Stock) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.symbol, other.symbol)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Stock{" + "id=" + id + ", ticksize=" + ticksize + ", price=" + price + ", party=" + party + '}';
+        return "Stock{" + "id=" + id + ", name=" + name + ", symbol=" + symbol + '}';
     }
-    
-    
-    
+
 }

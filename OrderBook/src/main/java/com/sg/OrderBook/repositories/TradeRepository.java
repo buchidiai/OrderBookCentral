@@ -5,9 +5,7 @@
  */
 package com.sg.OrderBook.repositories;
 
-import com.sg.OrderBook.entities.Order;
-import com.sg.OrderBook.entities.Stock;
-import com.sg.OrderBook.entities.Party;
+import com.sg.OrderBook.entities.StockOrder;
 import com.sg.OrderBook.entities.Trade;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,8 +16,11 @@ import org.springframework.stereotype.Repository;
  * @author anmol
  */
 @Repository
-public interface TradeRepository extends JpaRepository<Trade, Integer>{
-    List<Trade> findByBuyorder(Order order);
-    List<Trade> findBySellorder(Order order);
-    List<Trade> findByStock(Stock stock);
+public interface TradeRepository extends JpaRepository<Trade, Integer> {
+
+    List<Trade> findByBuyorder(StockOrder order);
+
+    List<Trade> findBySellorder(StockOrder order);
+
+    List<Trade> findByStockIdOrderByDatetimeAsc(int stockId);
 }

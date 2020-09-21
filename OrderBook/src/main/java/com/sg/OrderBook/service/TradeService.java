@@ -5,8 +5,8 @@
  */
 package com.sg.OrderBook.service;
 
-import com.sg.OrderBook.entities.Order;
 import com.sg.OrderBook.entities.Stock;
+import com.sg.OrderBook.entities.StockOrder;
 import com.sg.OrderBook.entities.Trade;
 import com.sg.OrderBook.repositories.TradeRepository;
 import java.util.List;
@@ -19,48 +19,47 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TradeService {
-    
+
     @Autowired
     private TradeRepository trades;
-    
-    public List<Trade> findAllTrades(){
-      
-         return trades.findAll();
-       
+
+    public List<Trade> findAllTrades() {
+
+        return trades.findAll();
+
     }
-    
-    public void makeTrade(Trade trade){
+
+    public void makeTrade(Trade trade) {
         trades.save(trade);
     }
-    
-    
-    public Trade findTradeById(int id){
-       
+
+    public Trade findTradeById(int id) {
+
         return trades.findById(id).orElse(null);
-       
+
     }
-    
-    
-    public void deleteTradeById(int id){
-       
-         trades.deleteById(id);
-    
+
+    public void deleteTradeById(int id) {
+
+        trades.deleteById(id);
+
     }
-    
-    public List<Trade> findTradeByBuyorder(Order order){
+
+    public List<Trade> findTradeByBuyorder(StockOrder order) {
         return trades.findByBuyorder(order);
     }
-    
-    public List<Trade> findTradeBySellorder(Order order){
-        
+
+    public List<Trade> findTradeBySellorder(StockOrder order) {
+
         return trades.findBySellorder(order);
     }
-    public List<Trade> findTradeByStock(Stock stock){
-        
-        return trades.findByStock(stock);
+
+    public List<Trade> findTradeByStock(Stock stock) {
+        return trades.findByStockIdOrderByDatetimeAsc(stock.getId());
     }
-    public void saveTrade(Trade trade){
+
+    public void saveTrade(Trade trade) {
         trades.save(trade);
     }
-    
+
 }
