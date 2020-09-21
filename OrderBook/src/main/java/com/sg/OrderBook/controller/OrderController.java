@@ -5,8 +5,14 @@
  */
 package com.sg.OrderBook.controller;
 
+import com.sg.OrderBook.entities.OrderTransaction;
+import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.entities.StockOrder;
+import com.sg.OrderBook.service.OrderTransactionService;
 import com.sg.OrderBook.service.StockOrderService;
+import com.sg.OrderBook.service.StockService;
+import java.sql.Timestamp;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,21 +30,46 @@ public class OrderController {
     @Autowired
     private StockOrderService orders;
 
-    @PostMapping("/addOrder")
-    public String addOrder(StockOrder order, Model model, RedirectAttributes redirectAttributes, int stockId) {
+    @Autowired
+    private StockService stocks;
 
-        if (order.getSide().equals("1")) {
-            order.setSide("BUY");
-        } else if (order.getSide().equals("2")) {
-            order.setSide("SELL");
+    @Autowired
+    private OrderTransactionService orderTransactions;
+
+    @PostMapping("/addOrder")
+    public String addOrder(StockOrder stockOrder, Model model, RedirectAttributes redirectAttributes, int stockId) {
+
+        if (stockOrder.getSide().equals("1")) {
+            stockOrder.setSide("BUY");
+        } else if (stockOrder.getSide().equals("2")) {
+            stockOrder.setSide("SELL");
         }
 
-        System.out.println("order to strdf " + order.toString());
-
         //get stock
+        Stock stock = stocks.findStockById(stockId);
+
         //add stock to order object
+        stockOrder.setStock(stock);
+        //set status
+        stockOrder.setStatus("IN-PROGRESS");
+
+        //add time
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        stockOrder.setDatetime(ts);
+
         //save order
+        orders.saveOrder(stockOrder);
         //add to order transaction
+
+        OrderTransaction orderTransaction = new OrderTransaction();
+        orderTransaction.setQuantity(stockOrder.getQuantity());
+        orderTransaction.setDatetime(stockOrder.getDatetime());
+        orderTransaction.setStockOrder(stockOrder);
+        orderTransaction.setTransactiontype("CREATED");
+
+        orderTransactions.saveOrderTransaction(orderTransaction);
+
         redirectAttributes.addAttribute("stockId", stockId);
         return "redirect:stockDetail";
     }

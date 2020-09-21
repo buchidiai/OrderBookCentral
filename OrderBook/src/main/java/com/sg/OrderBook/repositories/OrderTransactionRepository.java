@@ -6,6 +6,8 @@
 package com.sg.OrderBook.repositories;
 
 import com.sg.OrderBook.entities.OrderTransaction;
+import com.sg.OrderBook.entities.StockOrder;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderTransactionRepository extends JpaRepository<OrderTransaction, Integer> {
 
-//    List<OrderTransaction> findByStockOrder(StockOrder stockOrder);
+    List<OrderTransaction> findByStockOrder(StockOrder stockOrder);
+
 }

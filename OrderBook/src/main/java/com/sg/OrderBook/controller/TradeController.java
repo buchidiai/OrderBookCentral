@@ -5,6 +5,10 @@
  */
 package com.sg.OrderBook.controller;
 
+import com.sg.OrderBook.entities.Trade;
+import com.sg.OrderBook.service.TradeService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +20,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TradeController {
 
+    @Autowired
+    private TradeService trades;
+
     @GetMapping("/trades")
     public String TradePage(Model model) {
+
+        List<Trade> allTrades = trades.findAllTrades();
+
+        model.addAttribute("trades", allTrades);
+
         return "trades";
     }
 
     @GetMapping("/tradeDetail")
     public String getTrade(Model model, int tradeId) {
-        System.out.println("id  is " + tradeId);
-        model.addAttribute("id", tradeId);
+
+        Trade trade = trades.findTradeById(tradeId);
+
+        model.addAttribute("trade", trade);
+
         return "tradeDetail";
     }
 

@@ -30,14 +30,14 @@ public class OrderTransaction {
     private int quantity;
 
     @Column
-    private java.sql.Timestamp dateTime;
+    private java.sql.Timestamp datetime;
 
     @Column
-    private String transctionType;
+    private String transactiontype;
 
     @ManyToOne
     @JoinColumn(name = "stockOrderId", nullable = false)
-    private Stock stock;
+    private StockOrder stockOrder;
 
     public int getId() {
         return id;
@@ -55,38 +55,38 @@ public class OrderTransaction {
         this.quantity = quantity;
     }
 
-    public Timestamp getDateTime() {
-        return dateTime;
+    public Timestamp getDatetime() {
+        return datetime;
     }
 
-    public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
+    public void setDatetime(Timestamp datetime) {
+        this.datetime = datetime;
     }
 
-    public String getTransctionType() {
-        return transctionType;
+    public String getTransactiontype() {
+        return transactiontype;
     }
 
-    public void setTransctionType(String transctionType) {
-        this.transctionType = transctionType;
+    public void setTransactiontype(String transactiontype) {
+        this.transactiontype = transactiontype;
     }
 
-    public Stock getStock() {
-        return stock;
+    public StockOrder getStockOrder() {
+        return stockOrder;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
+    public void setStockOrder(StockOrder stockOrder) {
+        this.stockOrder = stockOrder;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.id;
-        hash = 37 * hash + this.quantity;
-        hash = 37 * hash + Objects.hashCode(this.dateTime);
-        hash = 37 * hash + Objects.hashCode(this.transctionType);
-        hash = 37 * hash + Objects.hashCode(this.stock);
+        int hash = 7;
+        hash = 89 * hash + this.id;
+        hash = 89 * hash + this.quantity;
+        hash = 89 * hash + Objects.hashCode(this.datetime);
+        hash = 89 * hash + Objects.hashCode(this.transactiontype);
+        hash = 89 * hash + Objects.hashCode(this.stockOrder);
         return hash;
     }
 
@@ -108,13 +108,13 @@ public class OrderTransaction {
         if (this.quantity != other.quantity) {
             return false;
         }
-        if (!Objects.equals(this.transctionType, other.transctionType)) {
+        if (!Objects.equals(this.transactiontype, other.transactiontype)) {
             return false;
         }
-        if (!Objects.equals(this.dateTime, other.dateTime)) {
+        if (!Objects.equals(this.datetime, other.datetime)) {
             return false;
         }
-        if (!Objects.equals(this.stock, other.stock)) {
+        if (!Objects.equals(this.stockOrder, other.stockOrder)) {
             return false;
         }
         return true;
@@ -122,7 +122,7 @@ public class OrderTransaction {
 
     @Override
     public String toString() {
-        return "OrderTransaction{" + "id=" + id + ", quantity=" + quantity + ", dateTime=" + dateTime + ", transctionType=" + transctionType + ", stock=" + stock + '}';
+        return "OrderTransaction{" + "id=" + id + ", quantity=" + quantity + ", datetime=" + datetime + ", transactiontype=" + transactiontype + ", stockOrder=" + stockOrder + '}';
     }
 
 }
