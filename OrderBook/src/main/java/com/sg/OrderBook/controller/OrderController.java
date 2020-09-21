@@ -13,6 +13,7 @@ import com.sg.OrderBook.service.StockOrderService;
 import com.sg.OrderBook.service.StockService;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,8 +61,8 @@ public class OrderController {
 
         //save order
         orders.saveOrder(stockOrder);
-        //add to order transaction
 
+        //add to order transaction
         OrderTransaction orderTransaction = new OrderTransaction();
         orderTransaction.setQuantity(stockOrder.getQuantity());
         orderTransaction.setDatetime(stockOrder.getDatetime());
@@ -70,7 +71,6 @@ public class OrderController {
 
         orderTransactions.saveOrderTransaction(orderTransaction);
 
-        
         redirectAttributes.addAttribute("stockId", stockId);
         return "redirect:stockDetail";
     }
@@ -78,23 +78,25 @@ public class OrderController {
     @GetMapping("/orderDetail")
     public String displayOrder(Model model, int orderId) {
 
-//        model.addAttribute("order", orders.findOrderById(orderId));
-//
-//        model.addAttribute("orderTransactions", orders.findOrderById(orderId));
+        //find order
+        StockOrder stockOrder = orders.findOrderById(orderId);
+
+        List<OrderTransaction> allOrderTransactions = orderTransactions.findByStockOrder(stockOrder);
+
+        model.addAttribute("order", stockOrder);
+        model.addAttribute("transactions", allOrderTransactions);
+
         return "orderDetail";
     }
 
     @GetMapping("/cancelOrder")
     public String cancelOrder(Model model, int orderId, int stockId, RedirectAttributes redirectAttributes) {
 
-        System.out.println("orderId " + orderId);
-        System.out.println("stockId " + stockId);
+        //find order
+        StockOrder stockOrder = orders.findOrderById(orderId);
 
-//        //find order
-//        Order order = orders.findOrderById(orderId);
-//
-//        // cancel order -> should cancel not delete
-//        orders.deleteOrderById(stockId);
+        //  cancel order -> should cancel not delete
+        //   orders.deleteOrderById(stockId);
         // redirect to stock details
         redirectAttributes.addAttribute("stockId", stockId);
 

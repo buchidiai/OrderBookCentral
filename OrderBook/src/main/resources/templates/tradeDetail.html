@@ -20,16 +20,18 @@
                 <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
                     <div class="card hoverable w-100">
                         <div class="card-body text-center">
-                            <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">ID: 1</h2>
-                            <p class="brown-lighter-hover font-italic"> DATE TIME : 07/31/2020 12:23 PM </p>
-                             <p class="brown-lighter-hover font-italic"> Quantity : 50 </p>
-                            <p class="brown-lighter-hover font-italic"> Price : $300 </p>
+                            <div>
+                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${'ID: '+trade.id}"  >ID</h2>
+                            </div>
+                            <p class="brown-lighter-hover font-italic" th:text="${'Date Time: '+trade.datetime}" > datetime</p>
+                            <p class="brown-lighter-hover font-italic"  th:text="${'Quantity: '+trade.quantity}"> quantity</p>
+                            <p class="brown-lighter-hover font-italic" th:text="${ 'Price: $ ' + trade.price}" > price</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-             <div class="row d-flex justify-content-around">
+
+            <div class="row d-flex justify-content-around">
 
                 <div class="d-flex flex-column col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
 
@@ -45,19 +47,21 @@
                                     <th scope="col">Time</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Size</th>
-                                    <th scope="col">Bid</th>
-                                  
-
+                                    <th scope="col">Bid</th>   
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody class="text-default white ">
-                                <tr>
-                                    <td >1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                   
+                                <tr th:each="buyOrder : ${buyOrder}">
+                                    <td th:text="${buyOrder.id}">1</td>
+                                    <td  th:text="${buyOrder.datetime}">Mark</td>
+                                    <td  th:text="${trade.stock.name}">Otto</td>
+                                    <td  th:text="${buyOrder.quantity}">@mdo</td>
+                                    <td  th:text="${buyOrder.price}">@mdo</td>
+                                    <td>
+                                        <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${buyOrder.id})}" ></a>
+                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -72,25 +76,27 @@
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped text-center ">
                             <thead class="default-color ">
-                                <tr >
+                                <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Offer</th>
-
-
+                                    <th scope="col">Details</th>
                                 </tr>
                             </thead>
                             <tbody class="text-default white">
-                                <tr >
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                </tr>
+                                <tr th:each="sellOrder : ${sellOrder}">
+                                    <td th:text="${sellOrder.id}">1</td>
+                                    <td  th:text="${sellOrder.datetime}">Mark</td>
+                                    <td  th:text="${trade.stock.name}">Otto</td>
+                                    <td  th:text="${sellOrder.quantity}">@mdo</td>
+                                    <td  th:text="${sellOrder.price}">@mdo</td>
+                                    <td>
+                                        <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${sellOrder.id})}" ></a>
+                                    </td>
 
+                                </tr>
                             </tbody>
                         </table>
                     </div>

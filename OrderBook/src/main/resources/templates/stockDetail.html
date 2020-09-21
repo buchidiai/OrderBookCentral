@@ -36,7 +36,7 @@
                             <option value="1">BUY</option>
                             <option value="2">SELL</option>
                         </select>
-                        <input name='price' type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Amount" min="1" max="1000000">
+                        <input name='price' type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Price" min="1" max="1000000">
                         <input min="1"  name="quantity"  type="number" class="form-control mb-2" placeholder="Quantity" />
                         <input type="hidden" name="stockId" th:value="${stock.id}"/>
                         <button   class="btn text-default border border-light btn-block unique-color-dark" type="submit">Send</button>
@@ -132,45 +132,45 @@
                             </thead>
                             <tbody class="text-default white ">
                                 <tr   th:each="order : ${sellOrders}">
-                                <td th:text="${order.id}"  >id</td>
-                                <td th:text="${order.datetime}">time</td>
-                                <td th:text="${order.quantity}">size</td>
-                                <td th:text="${'$' + order.price}">price</td>
+                                    <td th:text="${order.id}"  >id</td>
+                                    <td th:text="${order.datetime}">time</td>
+                                    <td th:text="${order.quantity}">size</td>
+                                    <td th:text="${'$' + order.price}">price</td>
 
-                                <td>
-                                    <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${order.id})}" ></a>
-                                </td>
-                                <td>
+                                    <td>
+                                        <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${order.id})}" ></a>
+                                    </td>
+                                    <td>
 
-                                    <a class="fas fa-window-close text-danger" data-toggle="modal" data-target="#deleteconfirm" ></a>
-                                    <!--Modal: modalConfirmDelete-->
-                                    <div class="modal fade" id="deleteconfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+                                        <a class="fas fa-window-close text-danger" data-toggle="modal" data-target="#deleteconfirm" ></a>
+                                        <!--Modal: modalConfirmDelete-->
+                                        <div class="modal fade" id="deleteconfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
-                                        <div class="modal-dialog modal-sm  " role="document">
-                                            <!--Content-->
-                                            <div class="modal-content text-center">
-                                                <!--Header-->
-                                                <div class="modal-header d-flex justify-content-center">
-                                                    <p class="heading font-weight-bold"> Confirm Cancel Sell Order ? </p>
+                                            <div class="modal-dialog modal-sm  " role="document">
+                                                <!--Content-->
+                                                <div class="modal-content text-center">
+                                                    <!--Header-->
+                                                    <div class="modal-header d-flex justify-content-center">
+                                                        <p class="heading font-weight-bold"> Confirm Cancel Sell Order ? </p>
+                                                    </div>
+                                                    <!--Body-->
+                                                    <div class="modal-body">
+                                                        <i class="fas fa-times fa-4x animated rotateIn text-danger"></i>
+                                                    </div>
+
+                                                    <!--Footer-->
+                                                    <div class="modal-footer justify-content-around">
+                                                        <a href="" class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${order.id} , stockId=${stock.id})}" >Yes</a>
+                                                        <a type="button" class="btn  btn-default waves-effect" data-dismiss="modal">No</a>
+                                                    </div>
                                                 </div>
-                                                <!--Body-->
-                                                <div class="modal-body">
-                                                    <i class="fas fa-times fa-4x animated rotateIn text-danger"></i>
-                                                </div>
-
-                                                <!--Footer-->
-                                                <div class="modal-footer justify-content-around">
-                                                    <a href="" class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${order.id} , stockId=${stock.id})}" >Yes</a>
-                                                    <a type="button" class="btn  btn-default waves-effect" data-dismiss="modal">No</a>
-                                                </div>
+                                                <!--/.Content-->
                                             </div>
-                                            <!--/.Content-->
                                         </div>
-                                    </div>
-                                    <!--Modal: modalConfirmDelete-->
-                                </td>
-                        
-                            </tr>
+                                        <!--Modal: modalConfirmDelete-->
+                                    </td>
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -214,7 +214,7 @@
                                 <td th:text="${trade.quantity}">50</td>
                                 <td th:text="${trade.price}">$500</td>
                                 <td>
-                                    <a class="fas fa-info-circle" th:href="@{/tradeDetail(tradeId=${1})}"></a>
+                                    <a class="fas fa-info-circle" th:href="@{/tradeDetail(tradeId=${trade.id})}"></a>
                                 </td>
                             </tr>
 
