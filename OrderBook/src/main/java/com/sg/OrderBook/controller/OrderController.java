@@ -25,7 +25,7 @@ public class OrderController {
     private OrderService orders;
 
     @PostMapping("/addOrder")
-    public String addOrder(Order order, Model model, RedirectAttributes redirectAttributes, Integer stockId) {
+    public String addOrder(Order order, Model model, RedirectAttributes redirectAttributes, int stockId) {
 
         if (order.getSide().equals("1")) {
             order.setSide("BUY");
