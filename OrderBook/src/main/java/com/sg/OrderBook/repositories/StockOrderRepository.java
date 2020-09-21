@@ -5,6 +5,7 @@
  */
 package com.sg.OrderBook.repositories;
 
+import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.entities.StockOrder;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,5 +31,9 @@ public interface StockOrderRepository extends JpaRepository<StockOrder, Integer>
     List<StockOrder> findByStockIdAndSideAndStatusOrderByPriceAsc(int stockId, String side, String status);
 
     List<StockOrder> findByStockIdAndSideAndStatusOrderByPriceDesc(int stockId, String side, String status);
+
+    List<StockOrder> findByStockAndSideOrderByDatetimeAsc(Stock stock, String side);
+
+    List<StockOrder> findByStockAndStatusOrderByDatetimeAsc(Stock stock, String status);
 
 }

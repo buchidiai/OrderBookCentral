@@ -55,6 +55,7 @@ public class StockController {
         Stock stock = stocks.findStockById(stockId);
 
         //make trades
+        trades.makeStockTrade(stock);
         //get orders of stock
         List<StockOrder> buyOrder = orders.findOrdersByStockIdAndSideAndpriceDesc(stock, "BUY", "IN-PROGRESS");
 
