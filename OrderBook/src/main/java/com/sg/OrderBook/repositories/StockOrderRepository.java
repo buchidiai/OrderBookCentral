@@ -32,7 +32,7 @@ public interface StockOrderRepository extends JpaRepository<StockOrder, Integer>
 
     List<StockOrder> findByStockIdAndSideAndStatusOrderByPriceDesc(int stockId, String side, String status);
 
-    List<StockOrder> findByStockAndSideOrderByDatetimeAsc(Stock stock, String side);
+    List<StockOrder> findByStockAndSideAndStatusOrderByDatetimeAsc(Stock stock, String side,  String status);
 
     List<StockOrder> findByStockAndStatusOrderByDatetimeAsc(Stock stock, String status);
 

@@ -74,8 +74,8 @@ public class TradeService {
      public void makeStockTrade(Stock stock) {
         Trade trade = new Trade();
 
-        List<StockOrder> buyOrders = orders.findOrderByStockAndSideAndStatusOrderByDatetimeAsc(stock, "BUY", "IN-PROGRESS");
-        List<StockOrder> sellOrders = orders.findOrderByStockAndSideAndStatusOrderByDatetimeAsc(stock, "SELL", "IN-PROGRESS");
+        List<StockOrder> buyOrders = orders.findByStockAndSideOrderByDatetimeAsc(stock, "BUY", "IN-PROGRESS");
+        List<StockOrder> sellOrders = orders.findByStockAndSideOrderByDatetimeAsc(stock, "SELL", "IN-PROGRESS");
 
         List<StockOrder> inProgressOrders = orders.findByStockAndStatusOrderByDatetimeAsc(stock, "IN-PROGRESS");
 

@@ -55,8 +55,8 @@ public class StockOrderService {
         return orders.findByDatetimeOrderByDatetimeAsc(datetime);
     }
 
-    List<StockOrder> findByStockAndSideOrderByDatetimeAsc(Stock stock, String side) {
-        return orders.findByStockAndSideOrderByDatetimeAsc(stock, side);
+    List<StockOrder> findByStockAndSideOrderByDatetimeAsc(Stock stock, String side, String status) {
+        return orders.findByStockAndSideAndStatusOrderByDatetimeAsc(stock, side,status);
     }
 
     List<StockOrder> findByStockAndStatusOrderByDatetimeAsc(Stock stock, String status) {

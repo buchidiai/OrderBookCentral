@@ -27,7 +27,7 @@ public class StockOrder {
     private String status;
 
     @Column
-    @Size(min = 1, max = 2)
+//    @Size(min = 1, max = 2)
     private String side;
 
     @Column
