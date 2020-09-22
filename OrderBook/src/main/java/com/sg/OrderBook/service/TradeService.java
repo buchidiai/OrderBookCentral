@@ -86,11 +86,7 @@ public class TradeService {
             if (side.equals("BUY")) {
                 makeTradeBUY(order, sellOrders);
 
-            } else if (side.equals("SELL")) {
-
-                makeTradeSELL(order, buyOrders);
-
-            }
+            } 
         }
 
     }
