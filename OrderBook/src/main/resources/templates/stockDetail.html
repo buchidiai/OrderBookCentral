@@ -51,6 +51,7 @@
 
                     <div class="d-flex justify-content-center">
                         <p class="h4 text-default">BIDS</p>
+                        <a class="far fa-eye white-text pl-3  fa-1x" th:href="@{/orders(stockId=${stock.id} , side=${'BUY'})}"  ></a>
                     </div>
 
 
@@ -113,8 +114,9 @@
                 </div>
                 <div class="d-flex flex-column col-xl-6 col-lg-4 col-md-3 col-sm-12 p-4 d-flex " >
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex row justify-content-center">
                         <p class="h4 text-default">OFFERS</p>
+                        <a class="far fa-eye white-text pl-3  fa-1x" th:href="@{/orders(stockId=${stock.id} , side=${'SELL'})}"></a>
                     </div>
 
                     <div class="d-flex justify-content-center">

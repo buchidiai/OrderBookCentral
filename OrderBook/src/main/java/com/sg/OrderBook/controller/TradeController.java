@@ -38,8 +38,6 @@ public class TradeController {
 
         Trade trade = trades.findTradeById(tradeId);
 
-        System.out.println("trade " + trade.toString());
-
         model.addAttribute("trade", trade);
         model.addAttribute("buyOrder", trade.getBuyorder());
         model.addAttribute("sellOrder", trade.getSellorder());

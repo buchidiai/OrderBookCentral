@@ -53,15 +53,14 @@
                             </thead>
                             <tbody class="text-default white ">
                                 <tr th:each="buyOrder : ${buyOrder}">
-                                    <td th:text="${buyOrder.id}">1</td>
-                                    <td  th:text="${buyOrder.datetime}">Mark</td>
-                                    <td  th:text="${trade.stock.name}">Otto</td>
-                                    <td  th:text="${buyOrder.quantity}">@mdo</td>
-                                    <td  th:text="${buyOrder.price}">@mdo</td>
+                                    <td th:text="${buyOrder.id}">id</td>
+                                    <td  th:text="${buyOrder.datetime}">datetime</td>
+                                    <td  th:text="${trade.stock.name}">name</td>
+                                    <td  th:text="${buyOrder.quantity}">quanity</td>
+                                    <td  th:text="${buyOrder.price}">price</td>
                                     <td>
                                         <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${buyOrder.id})}" ></a>
                                     </td>
-
                                 </tr>
                             </tbody>
                         </table>
@@ -87,11 +86,11 @@
                             </thead>
                             <tbody class="text-default white">
                                 <tr th:each="sellOrder : ${sellOrder}">
-                                    <td th:text="${sellOrder.id}">1</td>
-                                    <td  th:text="${sellOrder.datetime}">Mark</td>
-                                    <td  th:text="${trade.stock.name}">Otto</td>
-                                    <td  th:text="${sellOrder.quantity}">@mdo</td>
-                                    <td  th:text="${sellOrder.price}">@mdo</td>
+                                    <td th:text="${sellOrder.id}">id</td>
+                                    <td  th:text="${sellOrder.datetime}">datetime</td>
+                                    <td  th:text="${trade.stock.name}">name</td>
+                                    <td  th:text="${sellOrder.quantity}">quanity</td>
+                                    <td  th:text="${sellOrder.price}">price</td>
                                     <td>
                                         <a class="fas fa-info-circle" th:href="@{/orderDetail(orderId=${sellOrder.id})}" ></a>
                                     </td>
@@ -105,10 +104,8 @@
             </div>
         </div>
     </div>    
-
     <!-- End main body -->
     <!-- scripts -->
-
     <div th:insert="common :: scripts"></div>
     <script  src="index.js"></script>
     <div th:insert="common :: footer"></div>

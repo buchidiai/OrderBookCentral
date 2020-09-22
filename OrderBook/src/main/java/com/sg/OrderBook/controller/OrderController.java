@@ -51,23 +51,18 @@ public class OrderController {
 
         //add stock to order object
         stockOrder.setStock(stock);
+
         //set status
         stockOrder.setStatus("IN-PROGRESS");
 
         //add time
-        Date date = new Date();
-        Timestamp ts = new Timestamp(date.getTime());
-        stockOrder.setDatetime(ts);
+        setTimeOfTransaction(stockOrder);
 
         //save order
         orders.saveOrder(stockOrder);
 
-        //add to order transaction
-        OrderTransaction orderTransaction = new OrderTransaction();
-        orderTransaction.setQuantity(stockOrder.getQuantity());
-        orderTransaction.setDatetime(stockOrder.getDatetime());
-        orderTransaction.setStockOrder(stockOrder);
-        orderTransaction.setTransactiontype("CREATED");
+        //set to order transaction
+        OrderTransaction orderTransaction = setOrderTransaction("CREATED", stockOrder);
 
         orderTransactions.saveOrderTransaction(orderTransaction);
 
@@ -76,7 +71,7 @@ public class OrderController {
     }
 
     @GetMapping("/orderDetail")
-    public String displayOrder(Model model, int orderId) {
+    public String displayOrderDetail(Model model, int orderId) {
 
         //find order
         StockOrder stockOrder = orders.findOrderById(orderId);
@@ -95,12 +90,55 @@ public class OrderController {
         //find order
         StockOrder stockOrder = orders.findOrderById(orderId);
 
-        //  cancel order -> should cancel not delete
-        //   orders.deleteOrderById(stockId);
+        //update order
+        stockOrder.setStatus("CANCELLED");
+
+        //save order
+        orders.saveOrder(stockOrder);
+
+        //set time of deletion
+        setTimeOfTransaction(stockOrder);
+
+        //set to order transaction
+        OrderTransaction orderTransaction = setOrderTransaction("CANCELLED", stockOrder);
+
+        //save transaction
+        orderTransactions.saveOrderTransaction(orderTransaction);
+
         // redirect to stock details
         redirectAttributes.addAttribute("stockId", stockId);
 
         return "redirect:stockDetail";
+    }
+
+    @GetMapping("/orders")
+    public String displayAllOrders(Model model, int stockId, String side) {
+
+        //find all orders by stock and side
+        List<StockOrder> allOrders = orders.findByStockIdAndSide(stockId, side);
+
+        model.addAttribute("orders", allOrders);
+
+        return "orders";
+    }
+
+    private OrderTransaction setOrderTransaction(String status, StockOrder stockOrder) {
+
+        OrderTransaction orderTransaction = new OrderTransaction();
+        orderTransaction.setQuantity(stockOrder.getQuantity());
+        orderTransaction.setDatetime(stockOrder.getDatetime());
+        orderTransaction.setStockOrder(stockOrder);
+        orderTransaction.setTransactiontype(status);
+
+        return orderTransaction;
+    }
+
+    private void setTimeOfTransaction(StockOrder stockOrder) {
+
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        stockOrder.setDatetime(ts);
+
     }
 
 }
