@@ -63,6 +63,11 @@ public class StockController {
 
         List<Trade> stockTrades = trades.findTradeByStock(stock);
 
+        //return errors
+        model.addAttribute("errors", orders.getStockOrderViolations());
+
+        System.out.println("orders.getStockOrderViolations() " + orders.getStockOrderViolations().size());
+
         model.addAttribute("buyOrders", buyOrder);
         model.addAttribute("sellOrders", sellOrder);
         model.addAttribute("trades", stockTrades);

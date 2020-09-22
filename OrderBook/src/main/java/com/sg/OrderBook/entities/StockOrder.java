@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -25,15 +27,18 @@ public class StockOrder {
     private String status;
 
     @Column
+    @Size(min = 1, max = 2)
     private String side;
 
     @Column
+    @NotNull
     private int quantity;
 
     @Column
     private Timestamp datetime;
 
     @Column
+    @NotNull
     private BigDecimal price;
 
     @ManyToOne

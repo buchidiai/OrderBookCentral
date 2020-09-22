@@ -7,6 +7,7 @@ package com.sg.OrderBook.entities;
 
 import java.util.Objects;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -20,9 +21,11 @@ public class Stock {
     private int id;
 
     @Column
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @Column
+    @NotBlank(message = "Symbol is mandatory")
     private String symbol;
 
     public int getId() {

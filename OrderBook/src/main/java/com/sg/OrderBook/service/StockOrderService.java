@@ -8,7 +8,12 @@ package com.sg.OrderBook.service;
 import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.entities.StockOrder;
 import com.sg.OrderBook.repositories.StockOrderRepository;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +26,10 @@ public class StockOrderService {
 
     @Autowired
     private StockOrderRepository orders;
+
+    private Set<ConstraintViolation<StockOrder>> stockOrderViolations = new HashSet<>();
+
+    private Validator validate = Validation.buildDefaultValidatorFactory().getValidator();
 
     public void saveOrder(StockOrder order) {
         orders.save(order);
@@ -76,6 +85,14 @@ public class StockOrderService {
 
     public List<StockOrder> findByStockIdAndSide(int stockId, String side) {
         return orders.findByStockIdAndSide(stockId, side);
+    }
+
+    public Set<ConstraintViolation<StockOrder>> validateStockOrder(StockOrder stockOrder) {
+        return stockOrderViolations = validate.validate(stockOrder);
+    }
+
+    public Set<ConstraintViolation<StockOrder>> getStockOrderViolations() {
+        return stockOrderViolations;
     }
 
 }
