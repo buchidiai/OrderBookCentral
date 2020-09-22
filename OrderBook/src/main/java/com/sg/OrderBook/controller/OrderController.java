@@ -43,6 +43,8 @@ public class OrderController {
     public String addOrder(@Valid StockOrder stockOrder, BindingResult result, Model model, RedirectAttributes redirectAttributes,
             int stockId) {
 
+        System.out.println("side -- " + stockOrder.getSide());
+
         //check for errors
         if (result.hasErrors()) {
             orders.validateStockOrder(stockOrder);

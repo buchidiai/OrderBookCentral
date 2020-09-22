@@ -46,6 +46,8 @@ public class StockController {
     public String displayStocks(Model model) {
 
         model.addAttribute("stocks", stocks.findAllStock());
+
+        orders.clearStockOrderViolations();
         return "stocks";
     }
 
@@ -65,8 +67,6 @@ public class StockController {
 
         //return errors
         model.addAttribute("errors", orders.getStockOrderViolations());
-
-        System.out.println("orders.getStockOrderViolations() " + orders.getStockOrderViolations().size());
 
         model.addAttribute("buyOrders", buyOrder);
         model.addAttribute("sellOrders", sellOrder);

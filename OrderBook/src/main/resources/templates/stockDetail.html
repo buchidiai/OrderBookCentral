@@ -10,11 +10,21 @@
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
+
             <div class='flex-row'>
                 <div class='col'>
                     <h1 class='text-center deep-orange-text display-4 bounceIn font-weight-bold ' th:text="${stock.name}" ></h1>   
                 </div>
             </div>
+
+            <div th:if="${!errors.isEmpty()}" class="d-flex col justify-content-center alert alert-danger alert-dismissible fade show text-center " role="alert" th:each="error : ${errors}"  >
+                <p  th:text="${error.message}"></p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> 
+
+
             <!-- stock card -->
             <div class='row d-flex justify-content-around  '>
                 <div class="d-flex flex-row col-xl-4 col-lg-6 col-md-6 col-sm-12 p-5" >
@@ -29,15 +39,25 @@
                     </div>
                 </div>  
                 <div class="d-flex flex-row col-xl-4 col-lg-6 col-md-6 col-sm-12 justify-content-center p-5" >
+
                     <form class="text-center border border-light p-5"  action="addOrder" method="POST">
                         <p class="h4 text-default">Place Order</p>                        
-                        <select name='side' class="browser-default custom-select mb-1">
-                            <option value="0" selected disabled>SELECT SIDE</option>
-                            <option value="1">BUY</option>
-                            <option value="2">SELL</option>
-                        </select>
-                        <input name='price' type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Price" min="1" max="1000000">
-                        <input min="1"  name="quantity"  type="number" class="form-control mb-2" placeholder="Quantity" />
+
+                        <div>
+                            <select name='side' class="browser-default custom-select mb-1">
+                                <option value="0" selected disabled>SELECT SIDE</option>
+                                <option value="1">BUY</option>
+                                <option value="2">SELL</option>
+                            </select> 
+                        </div>
+                        <div>
+                            <input name='price' type="text" id="defaultContactFormEmail" class="form-control mb-1" placeholder="Price" min="1" max="1000000">
+                        </div>
+                        <div>
+                            <input min="1"  name="quantity"  type="number" class="form-control mb-2" placeholder="Quantity" />
+                        </div>
+
+
                         <input type="hidden" name="stockId" th:value="${stock.id}"/>
                         <button   class="btn text-default border border-light btn-block unique-color-dark" type="submit">Send</button>
                     </form>
