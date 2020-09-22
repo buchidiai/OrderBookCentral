@@ -10,22 +10,22 @@
         <div th:replace="common :: navBar"></div>
         <!-- Main Body of Page -->
         <div class='container-fluid'>
-               <div class='flex-row p-3'>
+            <div class='flex-row p-3'>
                 <div class='col'>
                     <h1 class='text-center deep-orange-text display-1 bounceIn font-weight-bold '>ORDER DETAIL</h1> 
                 </div>
             </div>
 
-               <div class='row d-flex justify-content-center'>
+            <div class='row d-flex justify-content-center'>
                 <div class="d-flex flex-row col-xl-3 col-lg-4 col-md-3 col-sm-12 p-4">
                     <div class="card hoverable w-100">
                         <div class="card-body text-center">
                             <div>
-                                    <h2 class="font-weight-bold deep-orange-lighter-hover mb-3"  >ID: 1</h2>
-                                </div>
-                                <p class="brown-lighter-hover font-italic"  > 09/12/2020 : 11:23 PM</p>
-                                <p class="brown-lighter-hover font-italic"  > QUANTITY: 300</p>
-                                <p class="brown-lighter-hover font-italic" > BID: $300</p>
+                                <h2 class="font-weight-bold deep-orange-lighter-hover mb-3" th:text="${'ID: '+order.id}"  >ID</h2>
+                            </div>
+                            <p class="brown-lighter-hover font-italic" th:text="${'Date Time: '+order.datetime}" > datetime</p>
+                            <p class="brown-lighter-hover font-italic"  th:text="${'Quantity: '+order.quantity}"> quantity</p>
+                            <p class="brown-lighter-hover font-italic" th:text="${ 'Price: $ ' + order.price}" > price</p>
                         </div>
                     </div>
                 </div>
@@ -44,41 +44,21 @@
                                 </th>
                                 <th class="th-sm">TIME
                                 </th>
-                                <th class="th-sm">SYMBOL
-                                </th>
-                                <th class="th-sm">NAME
-                                </th>
                                 <th class="th-sm">SIZE
                                 </th>
-                                <th class="th-sm">PRICE
+                                <th class="th-sm">TRANSACTION TYPE
                                 </th>
+                       
                             </tr>
                         </thead>
                         <tbody class="searchable ">
-                            <tr th:href="@{/tradeDetail(id=${1})}"  >
-                                <td >1</td>
-                                <td>07/31/2020 12:23 PM</td>
-                                <td>GOOG</td>
-                                <td>GOOGLE</td>
-                                <td>50</td>
-                                <td >$500</td>
+                            <tr  th:each="transaction : ${transactions}"  >
+                                <td th:text="${transaction.id}">ID</td>
+                                <td th:text="${transaction.datetime}"></td>
+                                 <td th:text="${transaction.quantity}"></td>
+                                <td th:text="${transaction.transactiontype}">GOOG</td>
                             </tr>
-                            <tr th:href="@{/tradeDetail(id=${32})}">
-                                <td >32</td>
-                                <td>09/12/2019 4:00 PM</td>
-                                <td>AMAZN</td>
-                                <td>AMAZON</td>
-                                <td>300</td>
-                                <td>$5000</td>
-                            </tr>
-                            <tr>
-                                <td >43</td>
-                                <td>02/15/2021 1:15 PM</td>
-                                <td>NFLX</td>
-                                <td>NETFLIX</td>
-                                <td>120</td>
-                                <td>$279</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
