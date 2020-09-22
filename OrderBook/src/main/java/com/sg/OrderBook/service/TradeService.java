@@ -86,12 +86,11 @@ public class TradeService {
             if (side.equals("BUY")) {
                 makeTradeBUY(order, sellOrders);
 
+            } else if (side.equals("SELL")) {
+
+                makeTradeSELL(order, buyOrders);
+
             }
-//            else if(side.equals("SELL")){
-//                
-//                makeTradeSELL( order,  buyOrders);
-//                
-//        }
         }
 
     }
@@ -108,11 +107,11 @@ public class TradeService {
         //going through all the sell orders
         for (StockOrder sellOrder : sellOrders) {
 
-            // information on the sell order 
+            // information on the sell order
             BigDecimal sellPrice = sellOrder.getPrice();
             int sellQuantity = sellOrder.getQuantity();
 
-            //matching the price 
+            //matching the price
             if (sellPrice.compareTo(price) <= 0) {
 
                 //validating the quantity
@@ -168,7 +167,7 @@ public class TradeService {
 
                     saveTrade(trade);
 
-                } else if (sellQuantity < quantity) //getting the quantity for the trade   
+                } else if (sellQuantity < quantity) //getting the quantity for the trade
                 {
                     updatedBuyQuantity = quantity - sellQuantity;
 
@@ -178,20 +177,20 @@ public class TradeService {
 
                     //updates status
                     sellOrder.setStatus("COMPLETED");
-                    
-                    
+
+
                     //creates Order transaction for the sell order
                     setTimeOfTransaction(sellOrder);
                     OrderTransaction sellOrderTransaction = setOrderTransaction("FULFILLED", sellOrder);
                      orderTransactions.saveOrderTransaction(sellOrderTransaction);
-                    
-                     
+
+
                      //creates Order transaction for the buy order
                     setTimeOfTransaction(order);
                     OrderTransaction orderTransaction = setOrderTransaction("PARTIALLY-FULFILLED", order);
                     orderTransactions.saveOrderTransaction(orderTransaction);
-                    
-                    
+
+
                     //saves it to SQL
                     orders.saveOrder(order);
                     orders.saveOrder(sellOrder);
@@ -226,11 +225,11 @@ public class TradeService {
 
         for (StockOrder buyOrder : buyOrders) {
 
-            // information on the buy order 
+            // information on the buy order
             BigDecimal buyPrice = buyOrder.getPrice();
             int buyQuantity = buyOrder.getQuantity();
 
-            //matching the price 
+            //matching the price
             if (buyPrice.compareTo(price) >= 0) {
 
                 //validating the quantity
@@ -265,7 +264,7 @@ public class TradeService {
                     trade.setDatetime(ts);
                     saveTrade(trade);
 
-                } else if (buyQuantity < quantity) //getting the quantity for the trade   
+                } else if (buyQuantity < quantity) //getting the quantity for the trade
                 {
                     updatedSellQuantity = quantity - buyQuantity;
 

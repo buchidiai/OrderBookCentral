@@ -56,7 +56,7 @@ public class StockOrderService {
     }
 
     List<StockOrder> findByStockAndSideOrderByDatetimeAsc(Stock stock, String side, String status) {
-        return orders.findByStockAndSideAndStatusOrderByDatetimeAsc(stock, side,status);
+        return orders.findByStockAndSideAndStatusOrderByDatetimeAsc(stock, side, status);
     }
 
     List<StockOrder> findByStockAndStatusOrderByDatetimeAsc(Stock stock, String status) {
@@ -93,6 +93,11 @@ public class StockOrderService {
 
     public Set<ConstraintViolation<StockOrder>> getStockOrderViolations() {
         return stockOrderViolations;
+    }
+
+    public void clearStockOrderViolations() {
+
+        stockOrderViolations.removeAll(stockOrderViolations);
     }
 
 }
