@@ -74,8 +74,8 @@ public class TradeService {
      public void makeStockTrade(Stock stock) {
         Trade trade = new Trade();
 
-        List<StockOrder> buyOrders = orders.findByStockAndSideOrderByDatetimeAsc(stock, "BUY");
-        List<StockOrder> sellOrders = orders.findByStockAndSideOrderByDatetimeAsc(stock, "SELL");
+        List<StockOrder> buyOrders = orders.findOrderByStockAndSideAndStatusOrderByDatetimeAsc(stock, "BUY", "IN-PROGRESS");
+        List<StockOrder> sellOrders = orders.findOrderByStockAndSideAndStatusOrderByDatetimeAsc(stock, "SELL", "IN-PROGRESS");
 
         List<StockOrder> inProgressOrders = orders.findByStockAndStatusOrderByDatetimeAsc(stock, "IN-PROGRESS");
 
@@ -95,7 +95,7 @@ public class TradeService {
         
     }
      
-     public void makeTradeBUY(StockOrder order, List<StockOrder> sellOrders) {
+     private void makeTradeBUY(StockOrder order, List<StockOrder> sellOrders) {
         Trade trade = new Trade();
         int updatedBuyQuantity = 0;
         int updatedSellQuantity = 0;
@@ -154,7 +154,7 @@ public class TradeService {
                 } else if (sellQuantity < quantity) //getting the quantity for the trade   
                 {
                     updatedBuyQuantity = quantity - sellQuantity;
-                }
+                
 
                 //updating the quantity for each order
                 sellOrder.setQuantity(0);
@@ -179,6 +179,7 @@ public class TradeService {
                 Timestamp ts = new Timestamp(date.getTime());
                 trade.setDatetime(ts);
                 saveTrade(trade);
+                }
             }
 
         }
@@ -186,7 +187,7 @@ public class TradeService {
        
     }
 
-    public void makeTradeSELL(StockOrder order, List<StockOrder> buyOrders) {
+    private void makeTradeSELL(StockOrder order, List<StockOrder> buyOrders) {
         Trade trade = new Trade();
         int updatedBuyQuantity = 0;
         int updatedSellQuantity = 0;
@@ -240,7 +241,7 @@ public class TradeService {
                 } else if (buyQuantity < quantity) //getting the quantity for the trade   
                 {
                     updatedSellQuantity = quantity - buyQuantity;
-                }
+               
 
                 //updating the quantity for each order
                 buyOrder.setQuantity(0);
@@ -260,7 +261,7 @@ public class TradeService {
                 Timestamp ts = new Timestamp(date.getTime());
                 trade.setDatetime(ts);
                 saveTrade(trade);
-
+                 }
             }
 
         }
