@@ -5,6 +5,7 @@
  */
 package com.sg.OrderBook.service;
 
+import com.sg.OrderBook.entities.OrderTransaction;
 import com.sg.OrderBook.entities.Stock;
 import com.sg.OrderBook.entities.StockOrder;
 import com.sg.OrderBook.entities.Trade;
@@ -25,11 +26,12 @@ public class TradeService {
 
     @Autowired
     private TradeRepository trades;
-    
-     @Autowired
+
+    @Autowired
     private StockOrderService orders;
-     
-      
+
+    @Autowired
+    private OrderTransactionService orderTransactions;
 
     public List<Trade> findAllTrades() {
 
@@ -70,8 +72,7 @@ public class TradeService {
         trades.save(trade);
     }
 
-    
-     public void makeStockTrade(Stock stock) {
+    public void makeStockTrade(Stock stock) {
         Trade trade = new Trade();
 
         List<StockOrder> buyOrders = orders.findByStockAndSideOrderByDatetimeAsc(stock, "BUY", "IN-PROGRESS");
@@ -83,8 +84,8 @@ public class TradeService {
             String side = order.getSide();
 
             if (side.equals("BUY")) {
-               makeTradeBUY(order, sellOrders);
-                
+                makeTradeBUY(order, sellOrders);
+
             }
 //            else if(side.equals("SELL")){
 //                
@@ -92,10 +93,10 @@ public class TradeService {
 //                
 //        }
         }
-        
+
     }
-     
-     private void makeTradeBUY(StockOrder order, List<StockOrder> sellOrders) {
+
+    private void makeTradeBUY(StockOrder order, List<StockOrder> sellOrders) {
         Trade trade = new Trade();
         int updatedBuyQuantity = 0;
         int updatedSellQuantity = 0;
@@ -126,16 +127,32 @@ public class TradeService {
 
                     //updates status
                     order.setStatus("COMPLETED");
-                    
-                    if (quantity== sellQuantity) {
+
+                    setTimeOfTransaction(order);
+
+                    OrderTransaction orderTransaction = setOrderTransaction("FULFILLED", order);
+
+                    //save transaction
+                    orderTransactions.saveOrderTransaction(orderTransaction);
+
+                    if (quantity == sellQuantity) {
                         sellOrder.setStatus("COMPLETED");
+
+                        setTimeOfTransaction(sellOrder);
+                        OrderTransaction sellOrderTransaction = setOrderTransaction("FULFILLED", sellOrder);
+                        //save transaction
+                        orderTransactions.saveOrderTransaction(sellOrderTransaction);
+
+                    } else {
+                        OrderTransaction sellOrderTransaction = setOrderTransaction("PARTIALLY-FULFILLED", sellOrder);
+
+                        //save transaction
+                        orderTransactions.saveOrderTransaction(sellOrderTransaction);
                     }
-                       //saves it to SQL
+
+                    //saves it to SQL
                     orders.saveOrder(order);
                     orders.saveOrder(sellOrder);
-                
-                    
-                    
 
                     //creating the trade and populating the object
                     trade.setBuyorder(order);
@@ -154,37 +171,48 @@ public class TradeService {
                 } else if (sellQuantity < quantity) //getting the quantity for the trade   
                 {
                     updatedBuyQuantity = quantity - sellQuantity;
-                
 
-                //updating the quantity for each order
-                sellOrder.setQuantity(0);
-                order.setQuantity(updatedBuyQuantity);
+                    //updating the quantity for each order
+                    sellOrder.setQuantity(0);
+                    order.setQuantity(updatedBuyQuantity);
 
-                //updates status
-                sellOrder.setStatus("COMPLETED");
-                
-                //saves it to SQL
-                orders.saveOrder(order);
-                orders.saveOrder(sellOrder);
-                
-                //creating the trade and populating the object
-                trade.setBuyorder(order);
-                trade.setSellorder(sellOrder);
-                trade.setPrice(sellPrice);
-                trade.setQuantity(sellQuantity);
-                trade.setStock(stock);
+                    //updates status
+                    sellOrder.setStatus("COMPLETED");
+                    
+                    
+                    //creates Order transaction for the sell order
+                    setTimeOfTransaction(sellOrder);
+                    OrderTransaction sellOrderTransaction = setOrderTransaction("FULFILLED", sellOrder);
+                     orderTransactions.saveOrderTransaction(sellOrderTransaction);
+                    
+                     
+                     //creates Order transaction for the buy order
+                    setTimeOfTransaction(order);
+                    OrderTransaction orderTransaction = setOrderTransaction("PARTIALLY-FULFILLED", order);
+                    orderTransactions.saveOrderTransaction(orderTransaction);
+                    
+                    
+                    //saves it to SQL
+                    orders.saveOrder(order);
+                    orders.saveOrder(sellOrder);
 
-                //sets the date and time for trade
-                Date date = new Date();
-                Timestamp ts = new Timestamp(date.getTime());
-                trade.setDatetime(ts);
-                saveTrade(trade);
+                    //creating the trade and populating the object
+                    trade.setBuyorder(order);
+                    trade.setSellorder(sellOrder);
+                    trade.setPrice(sellPrice);
+                    trade.setQuantity(sellQuantity);
+                    trade.setStock(stock);
+
+                    //sets the date and time for trade
+                    Date date = new Date();
+                    Timestamp ts = new Timestamp(date.getTime());
+                    trade.setDatetime(ts);
+                    saveTrade(trade);
                 }
             }
 
         }
 
-       
     }
 
     private void makeTradeSELL(StockOrder order, List<StockOrder> buyOrders) {
@@ -201,7 +229,6 @@ public class TradeService {
             // information on the buy order 
             BigDecimal buyPrice = buyOrder.getPrice();
             int buyQuantity = buyOrder.getQuantity();
-            
 
             //matching the price 
             if (buyPrice.compareTo(price) >= 0) {
@@ -221,11 +248,11 @@ public class TradeService {
                     if (quantity == buyQuantity) {
                         buyOrder.setStatus("COMPLETED");
                     }
-                    
+
                     //saves to SQL
                     orders.saveOrder(order);
                     orders.saveOrder(buyOrder);
-                    
+
                     //creating the trade and populating the object
                     trade.setSellorder(order);
                     trade.setBuyorder(buyOrder);
@@ -241,30 +268,48 @@ public class TradeService {
                 } else if (buyQuantity < quantity) //getting the quantity for the trade   
                 {
                     updatedSellQuantity = quantity - buyQuantity;
-               
 
-                //updating the quantity for each order
-                buyOrder.setQuantity(0);
-                order.setQuantity(updatedSellQuantity);
+                    //updating the quantity for each order
+                    buyOrder.setQuantity(0);
+                    order.setQuantity(updatedSellQuantity);
 
-                //sets status
-                buyOrder.setStatus("COMPLETED");
+                    //sets status
+                    buyOrder.setStatus("COMPLETED");
 
-                //creating the trade and populating the object
-                trade.setSellorder(order);
-                trade.setBuyorder(buyOrder);
-                trade.setPrice(buyPrice);
-                trade.setQuantity(buyQuantity);
-                trade.setStock(stock);
+                    //creating the trade and populating the object
+                    trade.setSellorder(order);
+                    trade.setBuyorder(buyOrder);
+                    trade.setPrice(buyPrice);
+                    trade.setQuantity(buyQuantity);
+                    trade.setStock(stock);
 
-                Date date = new Date();
-                Timestamp ts = new Timestamp(date.getTime());
-                trade.setDatetime(ts);
-                saveTrade(trade);
-                 }
+                    Date date = new Date();
+                    Timestamp ts = new Timestamp(date.getTime());
+                    trade.setDatetime(ts);
+                    saveTrade(trade);
+                }
             }
 
         }
-        
+
+    }
+
+    private OrderTransaction setOrderTransaction(String status, StockOrder stockOrder) {
+
+        OrderTransaction orderTransaction = new OrderTransaction();
+        orderTransaction.setQuantity(stockOrder.getQuantity());
+        orderTransaction.setDatetime(stockOrder.getDatetime());
+        orderTransaction.setStockOrder(stockOrder);
+        orderTransaction.setTransactiontype(status);
+
+        return orderTransaction;
+    }
+
+    private void setTimeOfTransaction(StockOrder stockOrder) {
+
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        stockOrder.setDatetime(ts);
+
     }
 }
