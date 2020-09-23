@@ -27,7 +27,7 @@ public class StockOrder {
     private String status;
 
     @Column
-    @NotNull(message = "Pick a side")
+    @NotNull(message = "Side is required")
     private String side;
 
     @Column

@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author louie
  */
 @Controller
-public class OrderController {
+public class StockOrderController {
 
     @Autowired
     private StockOrderService orders;
@@ -49,8 +49,12 @@ public class OrderController {
 
             redirectAttributes.addAttribute("stockId", stockId);
             return "redirect:stockDetail";
+        } else {
+            //clear errors
+            orders.clearStockOrderViolations();
         }
 
+        //set side
         if (stockOrder.getSide().equals("1")) {
             stockOrder.setSide("BUY");
         } else if (stockOrder.getSide().equals("2")) {
@@ -75,6 +79,7 @@ public class OrderController {
         //set to order transaction
         OrderTransaction orderTransaction = setOrderTransaction("CREATED", stockOrder);
 
+        //save transaction
         orderTransactions.saveOrderTransaction(orderTransaction);
 
         redirectAttributes.addAttribute("stockId", stockId);
@@ -87,6 +92,7 @@ public class OrderController {
         //find order
         StockOrder stockOrder = orders.findOrderById(orderId);
 
+        //get all transactions for an order
         List<OrderTransaction> allOrderTransactions = orderTransactions.findByStockOrder(stockOrder);
 
         model.addAttribute("order", stockOrder);
@@ -134,22 +140,18 @@ public class OrderController {
     }
 
     private OrderTransaction setOrderTransaction(String status, StockOrder stockOrder) {
-
         OrderTransaction orderTransaction = new OrderTransaction();
         orderTransaction.setQuantity(stockOrder.getQuantity());
         orderTransaction.setDatetime(stockOrder.getDatetime());
         orderTransaction.setStockOrder(stockOrder);
         orderTransaction.setTransactiontype(status);
-
         return orderTransaction;
     }
 
     private void setTimeOfTransaction(StockOrder stockOrder) {
-
         Date date = new Date();
         Timestamp ts = new Timestamp(date.getTime());
         stockOrder.setDatetime(ts);
-
     }
 
 }

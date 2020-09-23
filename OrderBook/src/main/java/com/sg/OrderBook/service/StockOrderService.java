@@ -97,7 +97,7 @@ public class StockOrderService {
 
     public void clearStockOrderViolations() {
 
-        stockOrderViolations.removeAll(stockOrderViolations);
+        stockOrderViolations.clear();
 
     }
 
