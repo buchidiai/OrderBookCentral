@@ -1,20 +1,18 @@
 use orderBook;
 
 
--- INSERT INTO stock (name,symbol) VALUES ('APPLE' , 'AAPL');
--- INSERT INTO stock (name,symbol) VALUES (  'Amazon','AMAZN');
--- INSERT INTO stock (name,symbol) VALUES ( 'Netflix','NFLX');
--- INSERT INTO stock (name,symbol) VALUES ( 'Tesla','TSLA');
--- INSERT INTO stock (name,symbol) VALUES ( 'Walmart','WMT');
--- INSERT INTO stock (name,symbol) VALUES ( ' NVIDIA Corporation','NVDA');
--- INSERT INTO stock (name,symbol) VALUES ( 'JPMorgan Chase & Co.','JPM');
--- INSERT INTO stock (name,symbol) VALUES ( 'Google','GOOG');
--- INSERT INTO stock (name,symbol) VALUES ( 'Alibaba Group Holding Limited','BABA');
+INSERT INTO stock (name,symbol) VALUES ('APPLE' , 'AAPL');
+INSERT INTO stock (name,symbol) VALUES (  'Amazon','AMAZN');
+INSERT INTO stock (name,symbol) VALUES ( 'Netflix','NFLX');
+INSERT INTO stock (name,symbol) VALUES ( 'Tesla','TSLA');
+INSERT INTO stock (name,symbol) VALUES ( 'Walmart','WMT');
+INSERT INTO stock (name,symbol) VALUES ( ' NVIDIA Corporation','NVDA');
+INSERT INTO stock (name,symbol) VALUES ( 'JPMorgan Chase & Co.','JPM');
+INSERT INTO stock (name,symbol) VALUES ( 'Google','GOOG');
+INSERT INTO stock (name,symbol) VALUES ( 'Alibaba Group Holding Limited','BABA');
 
 
-INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'COMPLETED', '1', '250','2020-09-16 12:03:21.140234','2.00');
-INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'COMPLETED', '2', '450','2020-08-15 13:03:41.140245','2.00');
-INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'COMPLETED', '2', '360','2020-08-17 16:05:11.140245','2.00');
+
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'CANCELLED', '3', '320','2020-08-02 19:06:30.140250','2.00');
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'CANCELLED', '2', '3550','2020-07-16 22:07:51.140212','2.00');
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'IN-PROGRESS', '4', '33450','2020-08-16 07:02:51.140222','2.00');
