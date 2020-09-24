@@ -13,8 +13,6 @@ INSERT INTO stock (name,symbol) VALUES ( 'Alibaba Group Holding Limited','BABA')
 
 
 
-INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'CANCELLED', '3', '320','2020-08-02 19:06:30.140250','2.00');
-INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'CANCELLED', '2', '3550','2020-07-16 22:07:51.140212','2.00');
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'IN-PROGRESS', '4', '33450','2020-08-16 07:02:51.140222','2.00');
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'IN-PROGRESS', '5', '30','2020-03-16 20:06:41.140211','1.00');
 INSERT INTO stock_order (side,status,stock_id,quantity,datetime,price) VALUES ('SELL', 'IN-PROGRESS', '6', '50','2020-08-11 05:12:11.140220','98.00');

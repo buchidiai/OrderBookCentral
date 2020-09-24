@@ -92,6 +92,8 @@ public class StockOrderController {
         //find order
         StockOrder stockOrder = orders.findOrderById(orderId);
 
+        System.out.println("stockOrder " + stockOrder.toString());
+
         //get all transactions for an order
         List<OrderTransaction> allOrderTransactions = orderTransactions.findByStockOrder(stockOrder);
 
