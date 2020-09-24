@@ -114,7 +114,7 @@
 
                                                     <!--Footer-->
                                                     <div class="modal-footer justify-content-around">
-                                                        <a href="" class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${order.id} , stockId=${stock.id})}" >Yes</a>
+                                                        <a  class=" text-danger btn  btn-outline-default" th:href="@{/cancelOrder( orderId=${order.id} , stockId=${stock.id} )}" >Yes</a>
                                                         <a type="button" class="btn  btn-default waves-effect" data-dismiss="modal">No</a>
                                                     </div>
                                                 </div>
@@ -179,7 +179,7 @@
 
                                                     <!--Footer-->
                                                     <div class="modal-footer justify-content-around">
-                                                        <a href="" class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${order.id} , stockId=${stock.id})}" >Yes</a>
+                                                        <a class=" text-danger btn  btn-outline-default  " th:href="@{/cancelOrder(orderId=${order.id} , stockId=${stock.id})}" >Yes</a>
                                                         <a type="button" class="btn  btn-default waves-effect" data-dismiss="modal">No</a>
                                                     </div>
                                                 </div>
